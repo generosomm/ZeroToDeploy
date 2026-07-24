@@ -1,0 +1,108 @@
+{
+  "name": "project-root",
+  "type": "folder",
+  "desc": "Root directory of your full-stack application",
+  "children": [
+    {
+      "name": "client",
+      "type": "folder",
+      "desc": "Frontend application (React / Vue / Vanilla JS, or Blade views if using PHP)",
+      "children": [
+        {
+          "name": "public",
+          "type": "folder",
+          "desc": "Static uncompiled assets (favicon, robots.txt, manifest.json)"
+        },
+        {
+          "name": "src",
+          "type": "folder",
+          "desc": "Frontend source code directory",
+          "children": [
+            { "name": "assets", "type": "folder", "desc": "Images, SVG icons, static fonts, vector graphics" },
+            {
+              "name": "components",
+              "type": "folder",
+              "desc": "Reusable UI components (Button, Modal, Table, Navbar, Card)",
+              "children": [
+                { "name": "ui", "type": "folder", "desc": "Smallest atomic elements (Input, Badge, Spinner, Toast)" }
+              ]
+            },
+            { "name": "layouts", "type": "folder", "desc": "Page shells & containers (AdminLayout, ClientLayout, AuthLayout)" },
+            { "name": "pages", "type": "folder", "desc": "Page views composed of components (Dashboard, Settings, Login)" },
+            { "name": "hooks", "type": "folder", "desc": "Reusable UI logic & composables (useAuth, useFetch, useForm)" },
+            { "name": "services", "type": "folder", "desc": "Isolated API requests & HTTP calls (api.js, authService.js)" },
+            { "name": "context", "type": "folder", "desc": "Global state management (authContext, themeContext, store)" },
+            { "name": "utils", "type": "folder", "desc": "Helper functions, formatters, validators, date utils" },
+            { "name": "constants", "type": "folder", "desc": "Enums, roles, status labels - NEVER hardcode inline!" },
+            { "name": "config", "type": "folder", "desc": "Environment-based configuration (API base URL, feature flags)" },
+            { "name": "App.jsx / main.js", "type": "file", "desc": "Application entry point & routing configuration" }
+          ]
+        },
+        { "name": "package.json", "type": "file", "desc": "Frontend dependencies and script commands" }
+      ]
+    },
+    {
+      "name": "server",
+      "type": "folder",
+      "desc": "Backend application server (Node/Express, Laravel, or Native PHP)",
+      "children": [
+        {
+          "name": "src",
+          "type": "folder",
+          "desc": "Backend source code directory",
+          "children": [
+            { "name": "controllers", "type": "folder", "desc": "HTTP request handlers, input processing, service invocation" },
+            { "name": "services", "type": "folder", "desc": "Core business logic, decoupled from HTTP routing" },
+            { "name": "models", "type": "folder", "desc": "Database schemas, ORM models, data entity definitions" },
+            { "name": "routes", "type": "folder", "desc": "API route definitions grouped by domain module (auth.js, user.js)" },
+            { "name": "middlewares", "type": "folder", "desc": "Auth verification, rate limiters, error handlers, validation" },
+            { "name": "config", "type": "folder", "desc": "Database connection parameters, env loaders, service clients" },
+            { "name": "utils", "type": "folder", "desc": "Backend utilities (password hashing, JWT signers, response wrappers)" },
+            { "name": "validators", "type": "folder", "desc": "Input sanitization & request payload validation schemas" }
+          ]
+        },
+        { "name": "uploads", "type": "folder", "desc": "User-uploaded files directory (GITIGNORED)" },
+        { "name": "package.json / composer.json", "type": "file", "desc": "Backend runtime dependencies & scripts" }
+      ]
+    },
+    {
+      "name": "database",
+      "type": "folder",
+      "desc": "Database schema files, migrations, and seed scripts",
+      "children": [
+        { "name": "migrations", "type": "folder", "desc": "Version-controlled database schema change logs" },
+        { "name": "seeders", "type": "folder", "desc": "Initial & sample data insertion scripts" },
+        { "name": "schema.sql", "type": "file", "desc": "Complete importable SQL snapshot for zero-config deployment" },
+        { "name": "ERD.png", "type": "file", "desc": "Visual Entity Relationship Diagram for client & dev reference" }
+      ]
+    },
+    {
+      "name": "docs",
+      "type": "folder",
+      "desc": "Human-readable documentation for developers & client IT",
+      "children": [
+        { "name": "README.md", "type": "file", "desc": "Project setup guide, prerequisites, and startup commands" },
+        { "name": "API.md", "type": "file", "desc": "Complete endpoint list with request/response JSON payloads" },
+        { "name": "DEPLOYMENT.md", "type": "file", "desc": "Server deployment checklist, environment variables, Nginx configs" },
+        { "name": "CHANGELOG.md", "type": "file", "desc": "Version update history and patch notes" }
+      ]
+    },
+    {
+      "name": "context",
+      "type": "folder",
+      "desc": "AI Briefing Kit folder - referenced during AI prompting (Cursor, Claude, Antigravity)",
+      "children": [
+        { "name": "PRD.md", "type": "file", "desc": "Product Requirements Document (Goals, MVP, Roadmap)" },
+        { "name": "ARCHITECTURE.md", "type": "file", "desc": "System Architecture (Diagrams, Pipeline, Layers, RBAC)" },
+        { "name": "SCHEMA.md", "type": "file", "desc": "Database Tables, Column Specs, API Route contracts" },
+        { "name": "DESIGN.md", "type": "file", "desc": "Design System (Colors, Typography, UI Tokens, Micro-interactions)" },
+        { "name": "RULES.md", "type": "file", "desc": "Coding Standards (SOLID, Naming, Error Handling, Types)" }
+      ]
+    },
+    { "name": "tests", "type": "folder", "desc": "Unit & integration test suites" },
+    { "name": ".env.example", "type": "file", "desc": "Environment variable template (No actual secret keys!)" },
+    { "name": ".gitignore", "type": "file", "desc": "Git exclusion definitions (node_modules, .env, uploads)" },
+    { "name": "docker-compose.yml", "type": "file", "desc": "Optional containerized environment configuration" },
+    { "name": "README.md", "type": "file", "desc": "Main project repository readme file" }
+  ]
+}

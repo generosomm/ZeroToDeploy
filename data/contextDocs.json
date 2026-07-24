@@ -1,0 +1,91 @@
+[
+  {
+    "id": "prd",
+    "filename": "PRD.md",
+    "title": "Product Requirements Document",
+    "subtitle": "The 'Why & What' of the System",
+    "sections": [
+      "Executive Summary",
+      "Core Goals & Objectives",
+      "Target Users & Audience Roles",
+      "Problem Statement & Current Workarounds",
+      "MVP Features (Phase 1 Launch)",
+      "Full Feature Backlog & Prioritization",
+      "Success Metrics & KPIs",
+      "Tech Stack Choices",
+      "Deployment Strategy",
+      "Phase Roadmap"
+    ],
+    "templateContent": "# PRD: [Project Name]\n\n## 1. Executive Summary\nBrief high-level overview of [Project Name] built for [Client Name].\n\n## 2. Problem Statement\nDescribe current manual/paper/spreadsheet workarounds and main pain points.\n\n## 3. Target User Roles\n- **Admin**: Full system management, user management, analytics.\n- **Staff**: Operational data entry and approval workflows.\n- **Client / Public**: Self-service submission and status tracking.\n\n## 4. MVP Core Features (Phase 1)\n- [ ] User Authentication & Role-Based Access Control (RBAC)\n- [ ] Core Data Entry & CRUD Management\n- [ ] Automated Report Generation / Export (PDF/Excel)\n- [ ] Dashboard Analytics Overview\n\n## 5. Success Metrics\n- 50% reduction in processing time for client requests.\n- Zero manual paper records required post-launch.\n\n## 6. Tech Stack & Infrastructure\n- **Frontend**: React + Vite + Vanilla CSS\n- **Backend**: Node.js / Express OR PHP / Laravel\n- **Database**: MySQL / PostgreSQL\n- **Hosting**: Vercel (Frontend) + Railway / VPS (Backend + DB)"
+  },
+  {
+    "id": "arch",
+    "filename": "ARCHITECTURE.md",
+    "title": "System Architecture",
+    "subtitle": "The 'How It Connects' Blueprint",
+    "sections": [
+      "System Overview & High-Level Diagram",
+      "Layered Architecture & Folder Conventions",
+      "Directory & Domain Structure",
+      "Middleware & Request Pipeline",
+      "Client-Side Architecture (State & Router)",
+      "Data Layer & Database Strategy",
+      "Authentication & Authorization Flow",
+      "Key Data Flows & Sequence Diagrams",
+      "Domain Business Logic Highlights",
+      "Cross-Cutting Concerns (Security, Logs, Validation)"
+    ],
+    "templateContent": "# ARCHITECTURE: [Project Name]\n\n## 1. System Overview\nLayered Monolith / Separated API Architecture:\n[Client App (React/Blade)] <---> [API Gateway / Express Routes] <---> [Services Layer] <---> [Database Layer (MySQL)]\n\n## 2. Layered Architecture Rules\n- **Controllers**: Handle HTTP input/output only. No SQL or direct business logic.\n- **Services**: Pure business logic & validation routines. Reusable.\n- **Models**: Database schemas and entity mappings.\n\n## 3. Request Pipeline & Middleware\n1. Cors & Rate Limiting Middleware\n2. Authentication Token Verification (JWT/Session)\n3. Role Authorization Checker (RBAC)\n4. Input Payload Validator (Zod/Joi)\n5. Controller Execution -> Service Layer -> Database\n6. Unified JSON Error Response Handler\n\n## 4. Auth & Security Strategy\n- JWT with HTTP-only Refresh Cookies OR Encrypted Session Cookies.\n- Password Hashing using Argon2id / bcrypt (cost factor >= 12)."
+  },
+  {
+    "id": "schema",
+    "filename": "SCHEMA.md",
+    "title": "Database & API Schema",
+    "subtitle": "Data Blueprint & Endpoint Contracts",
+    "sections": [
+      "Database Tables & Relationships (ER Diagram)",
+      "Table Schemas & Column Data Types",
+      "Row Level Security (RLS) & Foreign Key Constraints",
+      "API Routes Grouped by Domain",
+      "Request & Response Payload JSON Examples",
+      "Phase-Based Endpoint Priority List"
+    ],
+    "templateContent": "# SCHEMA: [Project Name]\n\n## 1. Database Entity Overview\n- `users` (id, name, email, password_hash, role_id, created_at)\n- `roles` (id, role_name, permissions)\n- `records` (id, user_id, title, status, metadata, created_at)\n\n## 2. Core API Endpoints\n\n### Auth Domain\n- `POST /api/v1/auth/login` \n  - Request: `{ \"email\": \"admin@domain.com\", \"password\": \"***\" }`\n  - Response: `{ \"success\": true, \"token\": \"...\", \"user\": { ... } }` \n\n### Records Domain\n- `GET /api/v1/records` (Filters: status, page, limit)\n- `POST /api/v1/records` (Create new entry)\n- `PUT /api/v1/records/:id` (Update entry)\n- `DELETE /api/v1/records/:id` (Soft delete entry)"
+  },
+  {
+    "id": "design",
+    "filename": "DESIGN.md",
+    "title": "Design System & UI Specs",
+    "subtitle": "Visual Rules & Interaction Consistency",
+    "sections": [
+      "Brand Identity & Art Direction",
+      "Color Palette & Semantic Design Tokens",
+      "Theme Variants (Dark / Light Mode Tokens)",
+      "Typography Scale & Font Family Stack",
+      "Spacing, Grid & Responsive Layout System",
+      "Border Radius, Elevation & Shadows",
+      "Micro-animations & Transition Timings",
+      "Accessibility Guidelines (WCAG AA)",
+      "Component Style Rules (Buttons, Cards, Tables)",
+      "Interaction Patterns & User Guidance"
+    ],
+    "templateContent": "# DESIGN SYSTEM: [Project Name]\n\n## 1. Color Palette (Semantic Tokens)\n- **Primary Accent**: Slate Teal (`#0f766e`, Hover: `#0d9488`)\n- **Background Dark**: Deep Charcoal (`#0f172a`)\n- **Background Light**: Pure White (`#f8fafc`)\n- **Surface Elevation**: Glass Obsidian (`rgba(30, 41, 59, 0.7)`)\n- **Text Primary**: Crisp White (`#f8fafc`) / Dark Slate (`#0f172a`)\n- **Status Indicators**:\n  - Success: Emerald (`#10b981`)\n  - Warning: Amber (`#f59e0b`)\n  - Danger: Rose (`#f43f5e`)\n\n## 2. Typography Stack\n- **Font Family**: Inter, system-ui, -apple-system, sans-serif\n- **Code Stack**: 'Fira Code', monospace\n- **Scale**:\n  - H1: 2.25rem (36px), font-weight: 700\n  - H2: 1.5rem (24px), font-weight: 600\n  - Body: 1rem (16px), line-height: 1.5"
+  },
+  {
+    "id": "rules",
+    "filename": "RULES.md",
+    "title": "Coding Standards & Rules",
+    "subtitle": "Team House Rules for AI & Humans",
+    "sections": [
+      "Naming Conventions (Files, Variables, DB)",
+      "SOLID Principles Application Guidelines",
+      "DRY & KISS Enforcement Rules",
+      "Code Organization & File Structure Rules",
+      "Input Validation & Sanitization Rules",
+      "TypeScript Standards (if applicable)",
+      "State Management Guidelines",
+      "Error Handling & Security Guardrails"
+    ],
+    "templateContent": "# CODING RULES: [Project Name]\n\n## 1. Naming Conventions\n- **Folders & Files**: kebab-case (`auth-service.js`, `user-card.jsx`)\n- **Variables & Functions**: camelCase (`getUserById`, `isSubmitted`)\n- **Database Tables & Columns**: snake_case (`user_profiles`, `created_at`)\n- **Constants**: UPPER_SNAKE_CASE (`MAX_RETRY_ATTEMPTS`)\n\n## 2. Code Rules\n- **No Hardcoded Magic Strings**: Move all roles, statuses, and config parameters to `constants/` or `.env`.\n- **Error Handling**: Every API route MUST be wrapped in a try/catch block or async handler returning unified JSON errors.\n- **Sanitization**: Never trust client payloads. Validate all body parameters using a validator schema before passing to service layer."
+  }
+]

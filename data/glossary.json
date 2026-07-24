@@ -1,0 +1,52 @@
+[
+  {
+    "term": "Frontend",
+    "category": "Basic",
+    "definition": "The visual part of the website that users see and interact with (buttons, text, layout, forms)."
+  },
+  {
+    "term": "Backend",
+    "category": "Basic",
+    "definition": "The behind-the-scenes server that processes login requests, security checks, and data calculations."
+  },
+  {
+    "term": "Database",
+    "category": "Basic",
+    "definition": "A secure digital storage system where your website saves permanent data like user accounts and orders."
+  },
+  {
+    "term": "API (Application Programming Interface)",
+    "category": "Intermediate",
+    "definition": "The messenger bridge that transfers data between your frontend website screens and backend server."
+  },
+  {
+    "term": "Repository (Repo)",
+    "category": "Tools",
+    "definition": "The folder on your computer (or GitHub) containing all your website's files, images, and code history."
+  },
+  {
+    "term": "Git",
+    "category": "Tools",
+    "definition": "A free version-control tool that saves snapshots of your work so you can safely undo mistakes."
+  },
+  {
+    "term": "Deployment",
+    "category": "Hosting",
+    "definition": "The process of uploading your finished website code from your laptop to cloud servers so anyone on the internet can visit it."
+  },
+  {
+    "term": "Environment Variables (.env)",
+    "category": "Security",
+    "definition": "A secret configuration file used to store private passwords, database keys, and API tokens safely."
+  },
+  {
+    "term": "CRUD",
+    "category": "Data",
+    "definition": "Short for Create, Read, Update, Delete—the 4 basic operations performed on any database record."
+  },
+  {
+    "term": "Middleware",
+    "category": "Security",
+    "definition": "A security checkpoint guard that checks if a user is logged in before letting them access protected pages."
+  }
+]

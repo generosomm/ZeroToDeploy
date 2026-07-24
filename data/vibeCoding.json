@@ -1,0 +1,54 @@
+{
+  "vibeCodingRules": [
+    {
+      "number": "01",
+      "title": "Always Attach the context/ Briefing Kit First",
+      "desc": "Before asking AI to generate any code, attach or reference PRD.md, ARCHITECTURE.md, SCHEMA.md, DESIGN.md, and RULES.md in your initial prompt session. This gives AI 100% project context so it never makes random architecture assumptions."
+    },
+    {
+      "number": "02",
+      "title": "Scope Prompts to One Feature or Layer at a Time",
+      "desc": "Avoid asking AI to 'build the entire app' in one prompt. Ask AI to implement a single route, service function, or UI component at a time, verifying each step before proceeding."
+    },
+    {
+      "number": "03",
+      "title": "Enforce Strict Code Rules in Every Prompt",
+      "desc": "Instruct AI to strictly follow your project rules: Component-first UI, Service-layer API calls, Constants for magic strings, and .env configuration."
+    },
+    {
+      "number": "04",
+      "title": "Never Accept Superficial Bug Fixes",
+      "desc": "When AI encounters an error, instruct it to inspect full error logs and trace the root cause instead of swallowing exceptions or returning dummy fallback data."
+    }
+  ],
+  "promptTemplates": [
+    {
+      "id": "setup",
+      "title": "Master System Setup & Scaffold Prompt",
+      "badge": "Step 1: System Init",
+      "desc": "Use this master prompt when starting a new project repository with Cursor, Claude, or Antigravity.",
+      "template": "You are acting as lead full-stack software architect. We are initializing a new client project using our team's Universal Project Structure.\n\n### System Overview:\n- Project Type: {{projectType}}\n\n### Tech Stack & Architecture:\n- Frontend: {{frontend}}\n- Backend: {{backend}}\n- Database: {{database}}\n- UI Component Library: {{uiLibrary}}\n- State Management: {{stateManagement}}\n- Authentication Method: {{authMethod}}\n- Deployment Target: {{deployment}}\n\n### Project Context:\nPlease review the attached files in the `context/` folder:\n1. `context/PRD.md` - Core goals, MVP features, user roles\n2. `context/ARCHITECTURE.md` - Layered architecture, directory conventions, auth flow\n3. `context/SCHEMA.md` - Database tables, column definitions, API routes\n4. `context/DESIGN.md` - Design system, colors, typography, UI rules\n5. `context/RULES.md` - Coding standards, SOLID, DRY, naming conventions\n\n### Your Initial Setup Tasks:\n1. Generate the folder structure for `client/`, `server/`, `database/`, `docs/`, `context/`, and `tests/` following our universal template.\n2. Create `.env.example` with placeholders for database credentials, API URLs, and mail settings.\n3. Create `database/schema.sql` containing full DDL SQL statements for all tables defined in `context/SCHEMA.md`.\n4. Set up the basic server entry point, routes directory, controller layer, service layer, and constants file.\n\nPlease generate clean, modular code adhering strictly to the architecture defined above and `context/RULES.md`. Do not hardcode magic strings, credentials, or localhost URLs."
+    },
+    {
+      "id": "feature",
+      "title": "New Feature Building Prompt",
+      "badge": "Step 2: Feature Dev",
+      "desc": "Use this prompt when building a specific feature (e.g. User Management, Order Entry, File Upload).",
+      "template": "We are building the [FEATURE_NAME] module for our system.\n\n### Context Requirements:\n- Refer to `context/PRD.md` for feature requirements.\n- Refer to `context/SCHEMA.md` for database schema & endpoint contracts.\n- Refer to `context/DESIGN.md` for visual styling tokens.\n\n### Implementation Rules:\n1. **Frontend**: Create reusable components in `client/src/components/`. All API calls MUST pass through a dedicated service file in `client/src/services/`. Do not fetch directly in pages.\n2. **Constants**: Store all status labels, roles, and magic strings in `src/constants/`.\n3. **Backend**: Implement HTTP handler in `server/src/controllers/`, business logic in `server/src/services/`, and input validation schema in `server/src/validators/`.\n\nPlease generate the implementation step-by-step with comments."
+    },
+    {
+      "id": "debug",
+      "title": "Bugfix & Root-Cause Tracing Prompt",
+      "badge": "Debugging",
+      "desc": "Use this prompt when an endpoint fails or a UI component throws runtime errors.",
+      "template": "We encountered an issue during runtime:\n\n### Error Log / Stack Trace:\n```\n[PASTE_ERROR_LOG_HERE]\n```\n\n### Instructions:\n1. Inspect the error log above and trace the exact root cause across controller, service, or database query layers.\n2. Do NOT mask symptoms, swallow exceptions, or return dummy fallback objects.\n3. Provide the exact fix and explain why the underlying contract was broken."
+    },
+    {
+      "id": "db_migration",
+      "title": "Database Schema Update Prompt",
+      "badge": "Database",
+      "desc": "Use this prompt whenever adding new tables or columns to ensure your DB remains reproducible.",
+      "template": "We need to modify our database schema to support [FEATURE_OR_COLUMN].\n\n### Requirements:\n1. Create a version-controlled migration file inside `database/migrations/`.\n2. Update the master `database/schema.sql` snapshot so a fresh import builds the latest database structure.\n3. Update `context/SCHEMA.md` to document the new table or column definition."
+    }
+  ]
+}

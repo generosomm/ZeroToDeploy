@@ -1,0 +1,56 @@
+[
+  {
+    "id": "p1",
+    "number": "01",
+    "title": "Component-First Architecture on Frontend",
+    "tag": "UI Architecture",
+    "desc": "If 2+ pages share the exact same UI element (button, card, table, modal), build it immediately as a component inside components/. Make it reusable by passing dynamic data via props instead of hardcoding text.",
+    "doThis": "Export a reusable <Modal title={title} isOpen={isOpen} onClose={onClose}>{children}</Modal>",
+    "dontDoThis": "Duplicate 50 lines of HTML modal layout inside 4 separate page components."
+  },
+  {
+    "id": "p2",
+    "number": "02",
+    "title": "Service Layer, Never Direct Fetching in Pages",
+    "tag": "API Integration",
+    "desc": "All API requests must pass through services/. When an endpoint changes or error handling needs updating, you only modify a single service file instead of touching every page view.",
+    "doThis": "Call userService.getUsers() in component, where userService handles baseURL, headers, and error toasts.",
+    "dontDoThis": "Call fetch('http://localhost:5000/api/users', { headers: ... }) directly inside page useEffect hooks."
+  },
+  {
+    "id": "p3",
+    "number": "03",
+    "title": "Constants File for All Magic Values",
+    "tag": "Code Quality",
+    "desc": "Roles (admin, staff, client), status labels (pending, approved, rejected), and fixed dropdown options belong in constants/—never inline. Hardcoded magic strings are the #1 cause of messy AI-generated code.",
+    "doThis": "Reference USER_ROLES.ADMIN or STATUS_CODES.PENDING from src/constants/index.js",
+    "dontDoThis": "Hardcode strings like if (user.role === 'admin_user') or status === 'Pending Approval' scattered in 10 files."
+  },
+  {
+    "id": "p4",
+    "number": "04",
+    "title": "Environment Config Driven by .env",
+    "tag": "Security & Ops",
+    "desc": "Database credentials, API URLs, and mail server settings belong in .env. Always commit a .env.example template so any new developer can set up their machine immediately.",
+    "doThis": "const API_URL = process.env.VITE_API_BASE_URL; always commit .env.example with placeholders.",
+    "dontDoThis": "Commit real database passwords or hardcode http://192.168.1.5:8000 inside source code."
+  },
+  {
+    "id": "p5",
+    "number": "05",
+    "title": "A Single Master schema.sql Kept Updated",
+    "tag": "Database Integrity",
+    "desc": "Keep a master schema.sql synced so when deploying to a new server or onboarding a client, you can import the entire database cleanly without recreating tables by hand.",
+    "doThis": "Keep database/schema.sql synced with every migration so a clean import builds the entire DB instantly.",
+    "dontDoThis": "Rely on memory or manual phpMyAdmin edits without exporting a master SQL snapshot."
+  },
+  {
+    "id": "p6",
+    "number": "06",
+    "title": "Consistent Naming Conventions Across Projects",
+    "tag": "Developer Velocity",
+    "desc": "Always use controllers, services, and routes regardless of the stack. Predictable naming means any team member or AI tool knows exactly where to locate and modify code.",
+    "doThis": "Maintain uniform folder conventions across all company repositories.",
+    "dontDoThis": "Name folders 'handlers' in Project A, 'api_endpoints' in Project B, and 'backend_logic' in Project C."
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "stage": 1,
+    "id": "stage-tools",
+    "title": "Stage 1: Set Up Your Free Work Environment",
+    "subtitle": "Before anything else, install the tools you need to build and view your website.",
+    "icon": "wrench",
+    "steps": [
+      {
+        "tool": "Cursor or VS Code",
+        "purpose": "Code Editor & AI Chat",
+        "desc": "This is where you will open your project and write code.",
+        "action": "Download free from cursor.com or code.visualstudio.com"
+      },
+      {
+        "tool": "Live Server (Plugin)",
+        "purpose": "Live Website Preview",
+        "desc": "Once VS Code is open, go to Extensions and install 'Live Server' so you can see your website update in real-time.",
+        "action": "Install via VS Code Extensions tab"
+      },
+      {
+        "tool": "Node.js",
+        "purpose": "Runtime Engine",
+        "desc": "Runs server and frontend dev tools on your computer.",
+        "action": "Download LTS from nodejs.org"
+      }
+    ]
+  },
+  {
+    "stage": 2,
+    "id": "stage-basics",
+    "title": "Stage 2: Understanding The Core Concepts (ELI5)",
+    "subtitle": "Learn how web apps work using simple everyday analogies.",
+    "icon": "book-open",
+    "steps": [
+      {
+        "title": "1. What is Frontend?",
+        "analogy": "The Restaurant Menu & Dining Room",
+        "desc": "Everything visitors see and click on—buttons, forms, pages in client/src/pages/ and components in client/src/components/."
+      },
+      {
+        "title": "2. What is Backend?",
+        "analogy": "The Restaurant Kitchen",
+        "desc": "The server engine processing requests in server/src/controllers/ and business logic in server/src/services/."
+      },
+      {
+        "title": "3. What is a Database?",
+        "analogy": "The Pantry & Filing Cabinet",
+        "desc": "Permanent data storage managed in database/schema.sql and database/migrations/."
+      }
+    ]
+  },
+  {
+    "stage": 3,
+    "id": "stage-blueprint",
+    "title": "Stage 3: Prepare Your 5 AI Context Briefing Docs",
+    "subtitle": "Fill the 5 markdown files inside the context/ folder before prompting AI.",
+    "icon": "file-text",
+    "steps": [
+      {
+        "title": "1. context/PRD.md (Product Requirements)",
+        "desc": "Defines what your website does, target user roles, and MVP features for launch."
+      },
+      {
+        "title": "2. context/ARCHITECTURE.md (System Flow)",
+        "desc": "Defines layered architecture conventions (controllers -> services -> database)."
+      },
+      {
+        "title": "3. context/SCHEMA.md (Data Blueprint)",
+        "desc": "Defines database table schemas and API endpoint contracts."
+      },
+      {
+        "title": "4. context/DESIGN.md (Design System)",
+        "desc": "Defines colors, fonts, spacing, and component styling rules."
+      },
+      {
+        "title": "5. context/RULES.md (Coding House Rules)",
+        "desc": "Defines naming conventions, DRY/KISS principles, and error handling rules."
+      }
+    ]
+  },
+  {
+    "stage": 4,
+    "id": "stage-structure-first",
+    "title": "Stage 4: Scaffold Your Project Structure",
+    "subtitle": "Create an empty folder, open it in VS Code, open the Terminal, and paste a scaffolding script.",
+    "icon": "folder-plus",
+    "steps": [
+      {
+        "title": "Why You MUST Setup Folder Structure First",
+        "analogy": "Building a House Foundation & Rooms Before Buying Furniture",
+        "desc": "If you ask AI tools to write code without a clean folder structure, AI will scatter files randomly. Setting up client/, server/, and database/ upfront gives AI a clear room for everything."
+      },
+      {
+        "stepNum": "Step 4.1",
+        "title": "Open VS Code Terminal",
+        "prompt": "Create an empty folder on your desktop. Drag and drop it into VS Code. Click 'Terminal' > 'New Terminal' at the top menu."
+      },
+      {
+        "stepNum": "Step 4.2",
+        "title": "Run Scaffolding Script",
+        "prompt": "Scroll down to the 'AI Setup' section of this guide, select your OS, copy the Folder Scaffolding Script, and paste it into your VS Code terminal. Hit Enter!"
+      }
+    ]
+  },
+  {
+    "stage": 5,
+    "id": "stage-prompting",
+    "title": "Stage 5: Prompt AI to Build Your Code Step-by-Step",
+    "subtitle": "Use the Prompt Builder below, then copy/paste into Cursor or Claude!",
+    "icon": "terminal",
+    "steps": [
+      {
+        "stepNum": "Step 5.1",
+        "title": "Initialize The Master System",
+        "prompt": "Use the Master System Initializer Prompt (from the section below) and paste it into AI. Ensure you attach your 5 context files so the AI understands your project."
+      },
+      {
+        "stepNum": "Step 5.2",
+        "title": "Build Master Database Schema",
+        "prompt": "Based on context/SCHEMA.md, ask AI to generate database/schema.sql containing clean DDL SQL queries to create all database tables and insert sample test records."
+      },
+      {
+        "stepNum": "Step 5.3",
+        "title": "Build Reusable UI Components",
+        "prompt": "Refer to context/DESIGN.md. Ask AI to build reusable UI components in client/src/components/ (Button, Modal, Table, Navbar, Card)."
+      },
+      {
+        "stepNum": "Step 5.4",
+        "title": "Build Backend Controllers & Services",
+        "prompt": "Ask AI to implement API routes in server/src/routes/, HTTP handlers in server/src/controllers/, and business logic in server/src/services/."
+      }
+    ]
+  },
+  {
+    "stage": 6,
+    "id": "stage-deploy",
+    "title": "Stage 6: Deploy Live to Vercel & Railway (Free)",
+    "subtitle": "Publish your full-stack site online!",
+    "icon": "globe",
+    "steps": [
+      {
+        "title": "1. Push Code to GitHub",
+        "desc": "Publish your repository to github.com."
+      },
+      {
+        "title": "2. Deploy Frontend on Vercel",
+        "desc": "Connect GitHub to vercel.com to host your client/ frontend for free."
+      },
+      {
+        "title": "3. Deploy Backend & DB on Railway",
+        "desc": "Connect GitHub to railway.app to host server/ and database/ MySQL/Postgres for free."
+      }
+    ]
+  }
+]

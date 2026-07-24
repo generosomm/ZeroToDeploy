@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero-to-Deploy Website Guide - Beginner Vibe Coding Playbook</title>
+  <meta name="description" content="Step-by-step interactive guide for beginners with zero tech background to build and deploy a website from scratch using AI tools.">
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+  <div id="app">
+    <!-- Top Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title" style="font-size: 20px; font-weight: 700;">Zero to Deploy</h1>
+          <span class="brand-tag" style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'IBM Plex Mono', monospace;">Beginner Guide</span>
+        </div>
+      </div>
+
+
+
+      <div class="header-actions">
+        <div class="header-progress-widget">
+          <div class="progress-info">
+            <span class="progress-label">Guide Progress</span>
+            <span class="progress-val" id="global-progress-text">0% (0/18)</span>
+          </div>
+          <div class="mini-progress-bar">
+            <div class="mini-progress-fill" id="global-progress-fill"></div>
+          </div>
+        </div>
+
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Minimalist Hero Banner -->
+    <div class="hero">
+      <div class="hero-pill">👋 Built to help anyone build a system</div>
+      <h2 class="hero-title">Develop Your Website<br>Even With Zero Coding Knowledge</h2>
+      <p class="hero-description">
+        I created this website to guide you step-by-step on exactly what you need to prepare <strong>before</strong> you start developing. Plus, you can use the interactive Prompt Builder for "Vibe Coding"—just fill up questions about the website you want to make, and it generates the perfect instructions for AI!
+      </p>
+      <div class="hero-features">
+        <div class="hero-feature-item">
+          <div class="hero-feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="hero-feature-text">
+            <h4>Step-by-Step Prep</h4>
+            <p>Know exactly what to do first before writing any code.</p>
+          </div>
+        </div>
+        <div class="hero-feature-item">
+          <div class="hero-feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="hero-feature-text">
+            <h4>No Coding Needed</h4>
+            <p>Designed specifically for people with zero technical background.</p>
+          </div>
+        </div>
+        <div class="hero-feature-item">
+          <div class="hero-feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="hero-feature-text">
+            <h4>Vibe Coding Prompt Builder</h4>
+            <p>Just fill out questions to build the perfect AI prompt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <!-- STAGE 3 BANNER -->
+    <div class="stage-banner">
+      <div class="stage-banner-num">STAGE 3</div>
+      <h2 class="stage-banner-title">Plan Your App</h2>
+      <p class="stage-banner-desc">Gather requirements and generate your 5 AI Briefing Documents.</p>
+    </div>
+
+    <!-- Section 5: Phase 0 Checklist -->
+    <section class="section scrollspy-section" id="phase0" data-nav="Checklist">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Checklist</div>
+          <h2 class="section-title">Pre-Development Workflow Checklist</h2>
+          <p class="section-subtitle">Verify your preparation steps before prompting AI to write project code.</p>
+        </div>
+      </div>
+      <div class="phase-steps-grid" id="phase-steps-grid">
+        <!-- Hydrated by js/main.js & modules/phase0.js -->
+      </div>
+    </section>
+
+<!-- Section 2: Interactive App Briefing Generator Wizard -->
+    <section class="section scrollspy-section" id="briefing-wizard" data-nav="Wizard">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Interactive Tool</div>
+          <h2 class="section-title">App Briefing Generator Wizard</h2>
+          <p class="section-subtitle">Answer 4 simple questions below to automatically generate all 5 AI briefing documents for your app.</p>
+        </div>
+      </div>
+      <div id="doc-generator-container">
+        <!-- Hydrated by js/main.js & modules/docGenerator.js -->
+      </div>
+    </section>
+
+<!-- Section 8: AI Context Kit -->
+    <section class="section scrollspy-section" id="context-kit" data-nav="Templates">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Briefing Kit</div>
+          <h2 class="section-title">Standard `context/` Folder Templates</h2>
+          <p class="section-subtitle">Reference or copy raw template contents for any of the 5 context docs.</p>
+        </div>
+      </div>
+
+      <div class="context-kit-card">
+        <div class="context-tabs-nav" id="context-tabs-nav">
+          <!-- Hydrated by js/main.js & modules/contextKit.js -->
+        </div>
+        <div class="context-tab-body" id="context-tab-body">
+          <!-- Hydrated by js/main.js & modules/contextKit.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- STAGE 4 & 5 BANNER -->
+    <div class="stage-banner">
+      <div class="stage-banner-num">STAGE 4 & 5</div>
+      <h2 class="stage-banner-title">Scaffold & Vibe Code</h2>
+      <p class="stage-banner-desc">Learn the folder structure, pick UI libraries, and build your AI Prompts.</p>
+    </div>
+
+<!-- Section 6: Folder Structure -->
+    <section class="section scrollspy-section" id="structure" data-nav="Structure">
+      <div class="section-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div class="section-tag">Architecture</div>
+            <h2 class="section-title">Project Folder Explorer</h2>
+            <p class="section-subtitle">Click any folder or file to learn what it stores in your application.</p>
+          </div>
+          <button class="btn-secondary" id="copy-tree-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy ASCII Tree
+          </button>
+        </div>
+      </div>
+
+      <div class="folder-explorer-layout">
+        <div class="tree-card" id="tree-container">
+          <!-- Hydrated by js/main.js & modules/explorer.js -->
+        </div>
+        <div class="tree-detail-box">
+          <div class="detail-header">
+            <span class="detail-icon">📌</span>
+            <span class="detail-name" id="tree-detail-name">project-root</span>
+          </div>
+          <p class="detail-desc" id="tree-detail-desc">
+            Select any folder node from the left tree to inspect its responsibility in your website.
+          </p>
+          <div class="script-box">
+            <div class="script-header">
+              <span>Quick Scaffold Tip</span>
+              <span>PowerShell / Bash</span>
+            </div>
+            <div class="code-pre"># Note: Generate scaffolding scripts using the prompt builder above!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Section 4: AI Prompt Generator -->
+    <section class="section scrollspy-section" id="vibe-coding" data-nav="Prompts">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">AI Setup</div>
+          <h2 class="section-title">Master System Prompt Builder</h2>
+          <p class="section-subtitle">Customize your stack options to generate copyable master setup prompts for AI coding tools.</p>
+        </div>
+      </div>
+      <div id="vibe-coding-container">
+        <!-- Hydrated by js/main.js & modules/vibeCoding.js -->
+      </div>
+    </section>
+
+<!-- Section 7: Core Principles -->
+    <section class="section scrollspy-section" id="principles" data-nav="Principles">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Best Practices</div>
+          <h2 class="section-title">6 Golden Principles for Clean Code</h2>
+          <p class="section-subtitle">Simple rules to ensure your AI-generated code stays organized and maintainable.</p>
+        </div>
+      </div>
+      <div class="principles-grid" id="principles-grid">
+        <!-- Hydrated by js/main.js & modules/principles.js -->
+      </div>
+    </section>
+
+<!-- Section 9: UI Component Libraries -->
+    <section class="section scrollspy-section" id="ui-libraries" data-nav="UI Libs">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">UI System</div>
+          <h2 class="section-title">Free UI Component Options</h2>
+          <p class="section-subtitle">Free tools to make your website look modern and professional.</p>
+        </div>
+      </div>
+
+      <div class="ui-filters">
+        <div class="filter-tags">
+          <button class="filter-chip active" data-filter="all">All Libraries</button>
+          <button class="filter-chip" data-filter="recommended">Team Default</button>
+          <button class="filter-chip" data-filter="tailwind">Tailwind CSS</button>
+          <button class="filter-chip" data-filter="admin panels">Admin Dashboards</button>
+          <button class="filter-chip" data-filter="headless">Headless Primitives</button>
+        </div>
+      </div>
+
+      <div class="ui-libraries-grid" id="ui-libraries-grid">
+        <!-- Hydrated by js/main.js & modules/uiLibraries.js -->
+      </div>
+
+      <div class="quiz-card">
+        <h3 class="quiz-title">Unsure which design library to pick?</h3>
+        <p class="quiz-desc">Click your project type below to get an instant recommendation:</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" data-choice="standard">Standard Client App</button>
+          <button class="quiz-btn" data-choice="fast">Rapid MVP / Demo</button>
+          <button class="quiz-btn" data-choice="admin">Data-Heavy Admin Portal</button>
+          <button class="quiz-btn" data-choice="landing">Landing Page with Visual Flair</button>
+        </div>
+        <div class="quiz-result" id="quiz-result"></div>
+      </div>
+    </section>
+
+
+    <!-- STAGE 6 BANNER -->
+    <div class="stage-banner">
+      <div class="stage-banner-num">STAGE 6</div>
+      <h2 class="stage-banner-title">Launch & Appendix</h2>
+      <p class="stage-banner-desc">Checklist for deployment and technical jargon buster.</p>
+    </div>
+
+<!-- Section 10: Deployment Checklist -->
+    <section class="section scrollspy-section" id="deployment" data-nav="Launch">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Launch</div>
+          <h2 class="section-title">Deployment-Ready Handover Checklist</h2>
+          <p class="section-subtitle">Final verification steps before publishing your website live!</p>
+        </div>
+      </div>
+      <div id="dep-checklist-container">
+        <!-- Hydrated by js/main.js & modules/deployment.js -->
+      </div>
+    </section>
+
+<!-- Section 3: Tech Jargon Buster Glossary -->
+    <section class="section scrollspy-section" id="glossary" data-nav="Glossary">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">ELI5 Glossary</div>
+          <h2 class="section-title">Tech Jargon Buster</h2>
+          <p class="section-subtitle">Don't understand a technical word? Search or browse beginner-friendly plain English explanations.</p>
+        </div>
+      </div>
+      <div id="glossary-container">
+        <!-- Hydrated by js/main.js & modules/glossary.js -->
+      </div>
+    </section>
+
+    <!-- Floating Bottom Navigation -->
+    <nav class="timeline-nav" id="timeline-nav">
+      <div class="timeline-track">
+        <div class="tl-brand">Zero <strong>to Deploy</strong></div>
+        <div class="nav-links-wrap">
+          <div class="nav-highlighter" id="nav-highlighter"></div>
+          <!-- Will be dynamically populated by JS based on .scrollspy-section tags -->
+        </div>
+        <button class="btn-icon" id="cmd-palette-btn" title="Search (Ctrl+K)" style="margin-left: 12px; width: 34px; height: 34px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Command Palette Modal -->
+    <div class="cmd-modal-overlay" id="cmd-modal">
+      <div class="cmd-modal-content">
+        <div class="cmd-modal-header">
+          <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="cmd-input" placeholder="Search steps, glossaries, templates..." autocomplete="off">
+          <span class="cmd-kbd">ESC</span>
+        </div>
+        <div class="cmd-results" id="cmd-results">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script type="module" src="js/main.js?v=2"></script>
+</body>
+</html>

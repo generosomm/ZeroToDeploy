@@ -1,0 +1,90 @@
+[
+  {
+    "id": "shadcn",
+    "name": "shadcn/ui",
+    "badge": "Team Default Recommended",
+    "type": "Copy-Paste Component System",
+    "description": "Not a traditional npm package. You copy component source code directly into your project repo.",
+    "pros": ["100% full code ownership & control", "Zero dependency bloat", "Stunning modern baseline design", "Highly customizable with Tailwind"],
+    "cons": ["Components installed individually", "Requires initial setup with Tailwind"],
+    "bestFor": "Standard client web applications, custom brand design systems, full-stack apps.",
+    "tags": ["Recommended", "Tailwind", "React", "Customizable"]
+  },
+  {
+    "id": "daisyui",
+    "name": "daisyUI",
+    "badge": "Fastest Prototyping",
+    "type": "Tailwind CSS Plugin",
+    "description": "Component class library for Tailwind CSS with over 35+ built-in instant themes.",
+    "pros": ["Super fast prototyping", "35+ instant theme switchers", "Pure CSS (No JS bundle overhead)", "Zero JS dependencies"],
+    "cons": ["Less markup control than copy-paste", "Deep custom overrides can be trickier"],
+    "bestFor": "Rapid MVP builds, hackathons, projects requiring instant multi-theme support.",
+    "tags": ["Fast", "Tailwind", "Themes", "No-JS"]
+  },
+  {
+    "id": "radix",
+    "name": "Radix UI",
+    "badge": "Accessibility Engine",
+    "type": "Unstyled Headless Primitives",
+    "description": "The underlying accessible behavior engine powering many shadcn components.",
+    "pros": ["Industry gold-standard accessibility (WAI-ARIA)", "Zero styled opinion - design 100% your way", "Solid keyboard & screen reader nav"],
+    "cons": ["No default styling included - you write all CSS", "Slower development pace recently"],
+    "bestFor": "Enterprise apps needing strict custom design systems with 100% WCAG accessibility.",
+    "tags": ["Headless", "Accessibility", "React"]
+  },
+  {
+    "id": "baseui",
+    "name": "Base UI",
+    "badge": "Modern Headless Alternative",
+    "type": "Unstyled Headless Primitives by MUI",
+    "description": "Next-generation unstyled component primitives created by the team behind MUI.",
+    "pros": ["Clean TypeScript definitions", "Active ongoing development", "Seamless integration with shadcn"],
+    "cons": ["Newer ecosystem, smaller community tutorials"],
+    "bestFor": "Developers wanting modern active unstyled primitives alongside shadcn.",
+    "tags": ["Headless", "TypeScript", "MUI Team"]
+  },
+  {
+    "id": "antdesign",
+    "name": "Ant Design (antd)",
+    "badge": "Data-Heavy Admin Specialist",
+    "type": "Complete UI Component Library",
+    "description": "Enterprise-grade React UI framework with rich data tables, forms, and charts out of the box.",
+    "pros": ["Massive set of ready components (100+)", "Built for complex data tables & filters", "Extremely battle-tested for enterprise"],
+    "cons": ["Heavy bundle size for small apps", "Corporate aesthetic, hard to make unique"],
+    "bestFor": "Data-dense back-office dashboards, government admin portals, enterprise ERPs.",
+    "tags": ["Admin Panels", "Dashboards", "Data Tables", "Enterprise"]
+  },
+  {
+    "id": "mantine",
+    "name": "Mantine",
+    "badge": "Feature-Packed System",
+    "type": "Pre-styled Design System + Hooks",
+    "description": "Full-featured React component library with 100+ components and 30+ custom hooks.",
+    "pros": ["Huge component collection", "Includes essential hooks (useForm, useDisclosure)", "Zero setup required to look good"],
+    "cons": ["Larger bundle size", "Harder to deeply re-style outside Mantine ecosystem"],
+    "bestFor": "All-in-one React apps where you want pre-styled components without Tailwind.",
+    "tags": ["Pre-styled", "Form Hooks", "Rich UI"]
+  },
+  {
+    "id": "chakra",
+    "name": "Chakra UI",
+    "badge": "Prop-Based Styling",
+    "type": "Modular Component Library",
+    "description": "Simple, modular React UI library using prop-based styling like <Box p={4} bg='teal.500'>.",
+    "pros": ["Easy to learn for beginners", "Great built-in accessibility", "Fast inline style tweaks via props"],
+    "cons": ["Workflow differs from Tailwind CSS", "Larger runtime CSS-in-JS overhead"],
+    "bestFor": "Teams comfortable with React props styling over utility classes.",
+    "tags": ["Props-Based", "Accessible", "Beginner-Friendly"]
+  },
+  {
+    "id": "magicui",
+    "name": "Aceternity UI / Magic UI",
+    "badge": "Visual Enhancers",
+    "type": "Animation & Flair Components",
+    "description": "Drop-in animated components (bento grids, glow effects, text effects) for shadcn projects.",
+    "pros": ["Instant 'WOW' visual flair", "100% free & open-source", "Directly compatible with shadcn"],
+    "cons": ["Visual effects only - not a complete UI system", "Do NOT use as your main app component set"],
+    "bestFor": "Client landing pages, hero sections, marketing showcases, project pitch demos.",
+    "tags": ["Animations", "Landing Pages", "Visual Flair", "Shadcn Accent"]
+  }
+]

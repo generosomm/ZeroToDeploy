@@ -1,0 +1,8 @@
+[
+  { "id": "dep_1", "text": ".env.example is complete, verified, and updated with all non-sensitive environment placeholders" },
+  { "id": "dep_2", "text": "database/schema.sql is exported and tested on a clean DB import with zero syntax errors" },
+  { "id": "dep_3", "text": "docs/README.md has clear, tested setup commands (install dependencies, import schema, run dev server)" },
+  { "id": "dep_4", "text": "No hardcoded credentials, local passwords, or localhost API URLs remain in client/server source code" },
+  { "id": "dep_5", "text": "Basic API error handling is implemented across all endpoints (no unhandled 500 crash traces)" },
+  { "id": "dep_6", "text": "Project has been tested end-to-end on a fresh git clone as if by a new developer or client IT team" }
+]
