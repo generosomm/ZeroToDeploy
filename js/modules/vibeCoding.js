@@ -12,7 +12,7 @@ export function renderVibeCoding(vibeData) {
   // Interactive Prompt Generator State
   let promptState = {
     projectType: 'E-Commerce Platform',
-    os: 'mac', // 'mac' | 'win'
+    os: 'win', // 'mac' | 'win'
     frontend: 'React + Vite',
     backend: 'Node.js + Express',
     database: 'MySQL',
@@ -70,7 +70,7 @@ touch client/src/App.jsx client/package.json server/package.json server/src/inde
           <div>
             <span class="builder-badge">⚡ Interactive Prompt Generator</span>
             <h3 class="builder-title">Master System Initializer Prompt Builder</h3>
-            <p class="builder-subtitle">Customize your tech stack below to generate a tailored master setup prompt for Claude, Cursor, or Antigravity.</p>
+            <p class="builder-subtitle">Customize your tech stack to generate a portable setup prompt for any AI coding assistant.</p>
           </div>
           
           <!-- Micro-Tutorial / Instructional Animation Placeholder -->
@@ -104,8 +104,8 @@ touch client/src/App.jsx client/package.json server/package.json server/src/inde
         <div class="control-group">
           <label class="control-label">Operating System:</label>
           <select id="sel-os" class="select-input">
-            <option value="mac">Mac / Linux (Bash)</option>
             <option value="win">Windows (PowerShell)</option>
+            <option value="mac">Mac / Linux (Bash)</option>
           </select>
         </div>
 

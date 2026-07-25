@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero-to-Deploy Website Guide - Beginner Vibe Coding Playbook</title>
-  <meta name="description" content="Step-by-step interactive guide for beginners with zero tech background to build and deploy a website from scratch using AI tools.">
+  <title>Zero to Deploy - Plan Any System and Build It With AI</title>
+  <meta name="description" content="Plan any client system, generate an AI-ready context kit, and follow a safe token-efficient path from idea to deployment.">
   <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
@@ -19,7 +19,7 @@
         </div>
         <div>
           <h1 class="brand-title" style="font-size: 20px; font-weight: 700;">Zero to Deploy</h1>
-          <span class="brand-tag" style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'IBM Plex Mono', monospace;">Beginner Guide</span>
+          <span class="brand-tag" style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'IBM Plex Mono', monospace;">Universal System Builder</span>
         </div>
       </div>
 
@@ -46,19 +46,23 @@
 
     <!-- Minimalist Hero Banner -->
     <div class="hero">
-      <div class="hero-pill">👋 Built to help anyone build a system</div>
-      <h2 class="hero-title">Develop Your Website<br>Even With Zero Coding Knowledge</h2>
+      <div class="hero-pill">Built for structured vibe coding</div>
+      <h2 class="hero-title">Plan Any System.<br>Build It With AI.<br>Ship It With Confidence.</h2>
       <p class="hero-description">
-        I created this website to guide you step-by-step on exactly what you need to prepare <strong>before</strong> you start developing. Plus, you can use the interactive Prompt Builder for "Vibe Coding"—just fill up questions about the website you want to make, and it generates the perfect instructions for AI!
+        Turn a client idea into a clear product brief, reusable project structure, and personalized prompts for any AI coding assistant—from discovery and design to testing, deployment, and handover.
       </p>
+      <div class="hero-actions">
+        <a class="hero-primary-cta" href="#briefing-wizard">Plan my system</a>
+        <a class="hero-secondary-cta" href="#structure">Explore the structure</a>
+      </div>
       <div class="hero-features">
         <div class="hero-feature-item">
           <div class="hero-feature-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           </div>
           <div class="hero-feature-text">
-            <h4>Step-by-Step Prep</h4>
-            <p>Know exactly what to do first before writing any code.</p>
+            <h4>Plan Before Code</h4>
+            <p>Capture the problem, users, workflows, risks, and launch scope first.</p>
           </div>
         </div>
         <div class="hero-feature-item">
@@ -66,8 +70,8 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div class="hero-feature-text">
-            <h4>No Coding Needed</h4>
-            <p>Designed specifically for people with zero technical background.</p>
+            <h4>One Stable Structure</h4>
+            <p>Use the same responsibility-based folders for every client system.</p>
           </div>
         </div>
         <div class="hero-feature-item">
@@ -75,8 +79,8 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <div class="hero-feature-text">
-            <h4>Vibe Coding Prompt Builder</h4>
-            <p>Just fill out questions to build the perfect AI prompt.</p>
+            <h4>Token-Smart AI Kit</h4>
+            <p>Generate stable context docs plus small prompts for each focused session.</p>
           </div>
         </div>
       </div>
@@ -88,9 +92,23 @@
     <!-- STAGE 3 BANNER -->
     <div class="stage-banner">
       <div class="stage-banner-num">STAGE 3</div>
-      <h2 class="stage-banner-title">Plan Your App</h2>
-      <p class="stage-banner-desc">Gather requirements and generate your 5 AI Briefing Documents.</p>
+      <h2 class="stage-banner-title">Plan the Whole System</h2>
+      <p class="stage-banner-desc">Gather client facts once, then generate a reusable build package for any AI assistant.</p>
     </div>
+
+    <!-- Interactive universal system planner -->
+    <section class="section scrollspy-section" id="briefing-wizard" data-nav="Planner">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Interactive System Planner</div>
+          <h2 class="section-title">From Client Idea to AI-Ready Build Package</h2>
+          <p class="section-subtitle">Describe the system in plain language. Get five context documents, a phased build plan, a master prompt, focused session prompts, and a downloadable project kit.</p>
+        </div>
+      </div>
+      <div id="doc-generator-container">
+        <!-- Hydrated by js/main.js & modules/docGenerator.js -->
+      </div>
+    </section>
 
     <!-- Section 5: Phase 0 Checklist -->
     <section class="section scrollspy-section" id="phase0" data-nav="Checklist">
@@ -103,20 +121,6 @@
       </div>
       <div class="phase-steps-grid" id="phase-steps-grid">
         <!-- Hydrated by js/main.js & modules/phase0.js -->
-      </div>
-    </section>
-
-<!-- Section 2: Interactive App Briefing Generator Wizard -->
-    <section class="section scrollspy-section" id="briefing-wizard" data-nav="Wizard">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Interactive Tool</div>
-          <h2 class="section-title">App Briefing Generator Wizard</h2>
-          <p class="section-subtitle">Answer 4 simple questions below to automatically generate all 5 AI briefing documents for your app.</p>
-        </div>
-      </div>
-      <div id="doc-generator-container">
-        <!-- Hydrated by js/main.js & modules/docGenerator.js -->
       </div>
     </section>
 
@@ -192,8 +196,8 @@
       <div class="section-header">
         <div>
           <div class="section-tag">AI Setup</div>
-          <h2 class="section-title">Master System Prompt Builder</h2>
-          <p class="section-subtitle">Customize your stack options to generate copyable master setup prompts for AI coding tools.</p>
+          <h2 class="section-title">Focused AI Workflow Prompts</h2>
+          <p class="section-subtitle">Use concise, task-specific prompts during implementation. Compatible with Codex, ChatGPT, Claude, Cursor, Copilot, Gemini, and other coding assistants.</p>
         </div>
       </div>
       <div id="vibe-coding-container">

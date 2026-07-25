@@ -17,8 +17,18 @@
     },
     {
       "number": "04",
-      "title": "Never Accept Superficial Bug Fixes",
-      "desc": "When AI encounters an error, instruct it to inspect full error logs and trace the root cause instead of swallowing exceptions or returning dummy fallback data."
+      "title": "Paste Evidence, Not the Whole Project",
+      "desc": "For debugging, provide the exact error, reproduction steps, expected result, actual result, and only the relevant file paths. Require a root-cause fix and a regression check."
+    },
+    {
+      "number": "05",
+      "title": "Request Changed Files and Real Verification",
+      "desc": "Ask for only changed files or a concise diff summary. Require the assistant to name the checks it actually ran and never accept an unverified claim that something works."
+    },
+    {
+      "number": "06",
+      "title": "Use Fresh Sessions at Milestones",
+      "desc": "When a feature or milestone is complete, start a fresh session with a short handoff: decisions, current behavior, next task, known issues, last checks, and relevant paths."
     }
   ],
   "promptTemplates": [
@@ -26,22 +36,22 @@
       "id": "setup",
       "title": "Master System Setup & Scaffold Prompt",
       "badge": "Step 1: System Init",
-      "desc": "Use this master prompt when starting a new project repository with Cursor, Claude, or Antigravity.",
-      "template": "You are acting as lead full-stack software architect. We are initializing a new client project using our team's Universal Project Structure.\n\n### System Overview:\n- Project Type: {{projectType}}\n\n### Tech Stack & Architecture:\n- Frontend: {{frontend}}\n- Backend: {{backend}}\n- Database: {{database}}\n- UI Component Library: {{uiLibrary}}\n- State Management: {{stateManagement}}\n- Authentication Method: {{authMethod}}\n- Deployment Target: {{deployment}}\n\n### Project Context:\nPlease review the attached files in the `context/` folder:\n1. `context/PRD.md` - Core goals, MVP features, user roles\n2. `context/ARCHITECTURE.md` - Layered architecture, directory conventions, auth flow\n3. `context/SCHEMA.md` - Database tables, column definitions, API routes\n4. `context/DESIGN.md` - Design system, colors, typography, UI rules\n5. `context/RULES.md` - Coding standards, SOLID, DRY, naming conventions\n\n### Your Initial Setup Tasks:\n1. Generate the folder structure for `client/`, `server/`, `database/`, `docs/`, `context/`, and `tests/` following our universal template.\n2. Create `.env.example` with placeholders for database credentials, API URLs, and mail settings.\n3. Create `database/schema.sql` containing full DDL SQL statements for all tables defined in `context/SCHEMA.md`.\n4. Set up the basic server entry point, routes directory, controller layer, service layer, and constants file.\n\nPlease generate clean, modular code adhering strictly to the architecture defined above and `context/RULES.md`. Do not hardcode magic strings, credentials, or localhost URLs."
+      "desc": "Use this planning prompt when opening a new project repository in any AI coding tool.",
+      "template": "Act as the lead software architect for a {{projectType}}.\n\nLocked direction:\n- Frontend: {{frontend}}\n- Backend: {{backend}}\n- Database: {{database}}\n- UI: {{uiLibrary}}\n- State: {{stateManagement}}\n- Authentication: {{authMethod}}\n- Deployment: {{deployment}}\n\nRead the five files in `context/` and `docs/BUILD_PLAN.md`. Inspect the repository before making assumptions.\n\nPLANNING ONLY:\n1. Restate the product, users, MVP, and non-goals in at most 8 bullets.\n2. Report contradictions, missing decisions, security risks, and deployment constraints.\n3. Propose 5 small milestones with acceptance checks.\n4. Recommend the smallest first vertical slice and the exact files it is likely to touch.\n\nDo not write code yet. Ask at most 3 questions, only if their answers materially change the solution. Wait for approval."
     },
     {
       "id": "feature",
       "title": "New Feature Building Prompt",
       "badge": "Step 2: Feature Dev",
       "desc": "Use this prompt when building a specific feature (e.g. User Management, Order Entry, File Upload).",
-      "template": "We are building the [FEATURE_NAME] module for our system.\n\n### Context Requirements:\n- Refer to `context/PRD.md` for feature requirements.\n- Refer to `context/SCHEMA.md` for database schema & endpoint contracts.\n- Refer to `context/DESIGN.md` for visual styling tokens.\n\n### Implementation Rules:\n1. **Frontend**: Create reusable components in `client/src/components/`. All API calls MUST pass through a dedicated service file in `client/src/services/`. Do not fetch directly in pages.\n2. **Constants**: Store all status labels, roles, and magic strings in `src/constants/`.\n3. **Backend**: Implement HTTP handler in `server/src/controllers/`, business logic in `server/src/services/`, and input validation schema in `server/src/validators/`.\n\nPlease generate the implementation step-by-step with comments."
+      "template": "Read `context/RULES.md`, the relevant sections of `context/PRD.md` and `context/SCHEMA.md`, and only the code paths involved in [FEATURE_NAME].\n\nOutcome: [ONE CONCRETE RESULT]\nAcceptance checks:\n- [CHECK 1]\n- [CHECK 2]\n\nInspect first, then implement the smallest complete vertical slice. Preserve unrelated changes. Keep API calls in client services, business rules in domain/server services, fixed values in constants, and validation at trust boundaries. Update tests and relevant docs. Finish with changed files and checks actually run."
     },
     {
       "id": "debug",
       "title": "Bugfix & Root-Cause Tracing Prompt",
       "badge": "Debugging",
       "desc": "Use this prompt when an endpoint fails or a UI component throws runtime errors.",
-      "template": "We encountered an issue during runtime:\n\n### Error Log / Stack Trace:\n```\n[PASTE_ERROR_LOG_HERE]\n```\n\n### Instructions:\n1. Inspect the error log above and trace the exact root cause across controller, service, or database query layers.\n2. Do NOT mask symptoms, swallow exceptions, or return dummy fallback objects.\n3. Provide the exact fix and explain why the underlying contract was broken."
+      "template": "Expected: [EXPECTED_BEHAVIOR]\nActual: [ACTUAL_BEHAVIOR]\nReproduction: [MINIMAL_STEPS]\nRelevant paths: [FILE_PATHS]\n\nExact error or log:\n```\n[PASTE_EXACT_OUTPUT]\n```\n\nDiagnose the root cause before editing. Do not swallow the error, weaken validation, or add dummy data. Change only necessary files, add a regression test when practical, run the narrowest relevant checks, and report the evidence."
     },
     {
       "id": "db_migration",
@@ -49,6 +59,20 @@
       "badge": "Database",
       "desc": "Use this prompt whenever adding new tables or columns to ensure your DB remains reproducible.",
       "template": "We need to modify our database schema to support [FEATURE_OR_COLUMN].\n\n### Requirements:\n1. Create a version-controlled migration file inside `database/migrations/`.\n2. Update the master `database/schema.sql` snapshot so a fresh import builds the latest database structure.\n3. Update `context/SCHEMA.md` to document the new table or column definition."
+    },
+    {
+      "id": "security",
+      "title": "Security & Production Review Prompt",
+      "badge": "Before Launch",
+      "desc": "Use before shipping authentication, uploads, payments, personal data, or other sensitive flows.",
+      "template": "Review [FEATURE_OR_FLOW] against `context/RULES.md` and `context/SCHEMA.md`. Trace authentication, authorization, validation, data exposure, logging, uploads, rate limits, secrets, and failure behavior. Rank findings by impact and likelihood. Do not change code yet; propose concrete fixes and tests for approval."
+    },
+    {
+      "id": "handoff",
+      "title": "Fresh Session Handoff Prompt",
+      "badge": "Save Tokens",
+      "desc": "Use at milestone boundaries instead of dragging a long conversation into the next task.",
+      "template": "Project: [NAME]\nCurrent milestone: [MILESTONE]\nCompleted: [SHORT BULLETS]\nCurrent behavior: [WHAT WORKS]\nNext task: [ONE OUTCOME]\nRelevant decisions: [ONLY WHAT MATTERS NEXT]\nKnown issues: [SHORT BULLETS]\nChecks last run: [COMMAND + RESULT]\nRelevant files: [PATHS]\n\nRead only the listed files and relevant context docs. Verify repository state, then continue with the next task. Do not recap unrelated history."
     }
   ]
 }

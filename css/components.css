@@ -372,6 +372,122 @@
 .wizard-output-body .code-pre { color: #e2e8f0; background: transparent; padding: 0; border: none; }
 [data-theme="light"] .wizard-output-body .code-pre { color: #E2E8F0; background: transparent; border: none; }
 
+/* Universal system planner */
+.planner-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0,0,0,.28);
+}
+.planner-aside {
+  padding: 32px 26px;
+  border-right: 1px solid var(--line);
+  background: radial-gradient(circle at 0 0, rgba(61,92,255,.2), transparent 38%), var(--surface);
+  position: sticky;
+  top: 0;
+  align-self: start;
+}
+.planner-aside-kicker {
+  color: var(--teal);
+  font: 600 10px/1.4 'IBM Plex Mono', monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.planner-aside h3 { font-size: 26px; line-height: 1.05; margin-bottom: 16px; }
+.planner-aside > p { color: var(--text-dim); font-size: 13px; line-height: 1.65; }
+.planner-score { display: flex; align-items: center; gap: 13px; margin: 28px 0; }
+.planner-score-ring {
+  --score: 0deg;
+  width: 66px; height: 66px; border-radius: 50%; flex: 0 0 auto;
+  display: grid; place-items: center;
+  background: conic-gradient(var(--gold) var(--score), var(--line) 0);
+  position: relative;
+}
+.planner-score-ring::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--surface); }
+.planner-score-ring span { z-index: 1; font: 600 12px 'IBM Plex Mono', monospace; }
+.planner-score strong, .planner-score span { display: block; }
+.planner-score strong { font-size: 13px; }
+.planner-score > div > span { color: var(--text-dim); font-size: 11px; margin-top: 3px; }
+.planner-route-list { display: grid; border-top: 1px solid var(--line); }
+.planner-route-list span { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--text-dim); }
+.planner-route-list b { color: var(--teal); font: 500 10px 'IBM Plex Mono', monospace; margin-right: 10px; }
+.planner-privacy {
+  margin-top: 24px; padding: 11px; border: 1px solid rgba(124,147,255,.25);
+  background: rgba(61,92,255,.07); color: var(--text-muted); border-radius: 6px; font-size: 11px;
+}
+.planner-main { min-width: 0; }
+.planner-step { padding: 30px 34px; border-bottom: 1px solid var(--line); max-width: none; margin: 0; }
+.planner-step-head { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 22px; }
+.planner-step-head > span {
+  color: var(--teal); border: 1px solid rgba(124,147,255,.35); border-radius: 4px;
+  padding: 4px 7px; font: 600 10px 'IBM Plex Mono', monospace;
+}
+.planner-step-head h4 { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0; }
+.planner-step-head p { color: var(--text-dim); font-size: 12px; margin-top: 3px; }
+.planner-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.planner-field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.planner-field--wide { grid-column: 1 / -1; }
+.planner-field label { color: var(--text-muted); font-size: 12px; font-weight: 600; }
+.planner-field input, .planner-field textarea, .planner-field select {
+  width: 100%; border: 1px solid var(--line); border-radius: 5px;
+  background: var(--bg); color: var(--text); font: 400 13px/1.5 'Space Grotesk', sans-serif;
+  padding: 11px 12px; outline: none; resize: vertical;
+}
+.planner-field select { min-height: 43px; }
+.planner-field textarea { min-height: 100px; }
+.planner-field input:focus, .planner-field textarea:focus, .planner-field select:focus {
+  border-color: var(--teal); box-shadow: 0 0 0 3px rgba(124,147,255,.11);
+}
+.planner-output { background: #030303; color: #f0f0ee; }
+.planner-output-top { display: flex; justify-content: space-between; gap: 22px; padding: 30px 34px; border-bottom: 1px solid #202020; }
+.planner-output-top h3 { font-size: 22px; margin: 9px 0 6px; color: #f0f0ee !important; }
+.planner-output-top p { color: #7a7a88 !important; font-size: 13px; max-width: 590px; }
+.planner-actions { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.planner-output-tabs {
+  display: flex; gap: 6px; overflow-x: auto; padding: 13px 18px; border-bottom: 1px solid #202020;
+  scrollbar-width: thin;
+}
+.planner-output-tab {
+  flex: 0 0 auto; border: 1px solid #252525; background: #0b0b0b; color: #858593;
+  border-radius: 99px; padding: 7px 11px; font: 600 10px 'IBM Plex Mono', monospace; cursor: pointer;
+}
+.planner-output-tab.active { color: #fff; border-color: #526dff; background: rgba(61,92,255,.2); }
+.planner-preview-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px 20px; border-bottom: 1px solid #202020; color: #a0b0ff;
+  font: 500 11px 'IBM Plex Mono', monospace;
+}
+.planner-code {
+  margin: 0; padding: 24px; background: #030303; color: #cbd1dc; border: 0;
+  font: 400 12px/1.72 'IBM Plex Mono', monospace; white-space: pre-wrap; overflow: auto;
+  max-height: 660px;
+}
+[data-theme="light"] .planner-shell { background: #fff; }
+[data-theme="light"] .planner-aside { background: radial-gradient(circle at 0 0, rgba(37,99,235,.12), transparent 38%), #f8fafc; }
+[data-theme="light"] .planner-score-ring::after { background: #f8fafc; }
+[data-theme="light"] .planner-field input,
+[data-theme="light"] .planner-field textarea,
+[data-theme="light"] .planner-field select { background: #fff; border-color: #cbd5e1; }
+
+@media (max-width: 900px) {
+  .planner-shell { grid-template-columns: 1fr; }
+  .planner-aside { position: static; border-right: 0; border-bottom: 1px solid var(--line); }
+  .planner-route-list { display: none; }
+  .planner-output-top { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .planner-step, .planner-output-top { padding: 22px 16px; }
+  .planner-fields { grid-template-columns: 1fr; }
+  .planner-field--wide { grid-column: auto; }
+  .planner-actions { width: 100%; }
+  .planner-actions button { flex: 1; }
+  .planner-code { padding: 18px 14px; font-size: 11px; max-height: 520px; }
+}
+
 /* ═══════════════════════════════════════════════════════════
    GLOSSARY (glossary.js)
    ═══════════════════════════════════════════════════════════ */
