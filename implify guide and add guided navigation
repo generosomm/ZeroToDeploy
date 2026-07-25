@@ -1,0 +1,40 @@
+ README.md                     |   79 [32m++[m
+ base ui/css/base.css          |  138 [31m----[m
+ base ui/css/effects.css       |  233 [31m------[m
+ base ui/css/layout.css        |  601 [31m----------------[m
+ base ui/css/theme.css         |  203 [31m------[m
+ base ui/index.html            |  179 [31m-----[m
+ base ui/js/data.js            |   91 [31m---[m
+ base ui/js/interactions.js    |  636 [31m-----------------[m
+ base ui/js/main.js            |  155 [31m----[m
+ base ui/js/render.js          |  473 [31m------------[m
+ css/base.css                  |    3 [31m-[m
+ css/components.css            | 1582 [32m++++++++[m[31m---------------------------------[m
+ css/layout.css                |  293 [32m+++[m[31m-----[m
+ css/style.css                 |    6 [32m+[m[31m-[m
+ data/beginnerJourney.json     |  156 [31m----[m
+ data/contextDocs.json         |   91 [31m---[m
+ data/deploymentChecklist.json |    8 [31m-[m
+ data/folderStructure.json     |   23 [32m+[m[31m-[m
+ data/glossary.json            |   52 [31m--[m
+ data/phase0.json              |  106 [31m---[m
+ data/principles.json          |   56 [31m--[m
+ data/uiLibraries.json         |   90 [31m---[m
+ data/vibeCoding.json          |   78 [31m--[m
+ index.html                    |  525 [32m++++[m[31m----------[m
+ js/app.js                     |  527 [31m--------------[m
+ js/data.js                    |  552 [31m--------------[m
+ js/main.js                    |  374 [32m++++[m[31m------[m
+ js/modules/beginnerJourney.js |   82 [31m---[m
+ js/modules/contextKit.js      |   59 [31m--[m
+ js/modules/deployment.js      |   37 [31m-[m
+ js/modules/docGenerator.js    |  136 [32m+++[m[31m-[m
+ js/modules/explorer.js        |  201 [32m+++[m[31m---[m
+ js/modules/glossary.js        |   76 [31m--[m
+ js/modules/phase0.js          |  105 [31m---[m
+ js/modules/principles.js      |   29 [31m-[m
+ js/modules/uiLibraries.js     |   70 [31m--[m
+ js/modules/utils.js           |    6 [31m-[m
+ js/modules/vibeCoding.js      |  299 [31m--------[m
+ reorder.py                    |   78 [31m--[m
+ 39 files changed, 1021 insertions(+), 7467 deletions(-)
