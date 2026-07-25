@@ -36,10 +36,14 @@ const UNIVERSAL_TREE = `project-root/
 |   |-- SCHEMA.md
 |   |-- DESIGN.md
 |   \`-- RULES.md
+|-- prompts/
+|   |-- MASTER_PROMPT.md
+|   \`-- SESSION_PROMPTS.md
 |-- docs/
 |   |-- decisions/
 |   |-- handoffs/
 |   |-- BUILD_PLAN.md
+|   |-- CLIENT_DISCOVERY.md
 |   |-- API.md
 |   |-- DEPLOYMENT.md
 |   \`-- CHANGELOG.md
@@ -49,6 +53,7 @@ const UNIVERSAL_TREE = `project-root/
 |   |-- e2e/
 |   \`-- fixtures/
 |-- scripts/
+|-- project-answers.json
 |-- .env.example
 |-- .gitignore
 \`-- README.md`;

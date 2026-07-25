@@ -85,10 +85,20 @@
         { "name": "decisions", "type": "folder", "desc": "Architecture decision records explaining important technical choices" },
         { "name": "handoffs", "type": "folder", "desc": "Compact milestone summaries for starting fresh AI sessions" },
         { "name": "BUILD_PLAN.md", "type": "file", "desc": "Approved implementation phases, feature order, and acceptance gates" },
+        { "name": "CLIENT_DISCOVERY.md", "type": "file", "desc": "Client facts, unresolved decisions, responsibilities, and written approval checklist" },
         { "name": "README.md", "type": "file", "desc": "Project setup guide, prerequisites, and startup commands" },
         { "name": "API.md", "type": "file", "desc": "Complete endpoint list with request/response JSON payloads" },
         { "name": "DEPLOYMENT.md", "type": "file", "desc": "Server deployment checklist, environment variables, Nginx configs" },
         { "name": "CHANGELOG.md", "type": "file", "desc": "Version update history and patch notes" }
+      ]
+    },
+    {
+      "name": "prompts",
+      "type": "folder",
+      "desc": "Portable AI startup and focused-session prompt templates",
+      "children": [
+        { "name": "MASTER_PROMPT.md", "type": "file", "desc": "One-time project briefing and planning request for the coding assistant" },
+        { "name": "SESSION_PROMPTS.md", "type": "file", "desc": "Focused feature, debugging, review, and handoff prompt templates" }
       ]
     },
     {
@@ -116,6 +126,7 @@
     },
     { "name": "scripts", "type": "folder", "desc": "Repeatable setup, validation, backup, migration, and deployment helpers" },
     { "name": ".env.example", "type": "file", "desc": "Environment variable template (No actual secret keys!)" },
+    { "name": "project-answers.json", "type": "file", "desc": "Portable source answers used to restore and regenerate the planning documents" },
     { "name": ".gitignore", "type": "file", "desc": "Git exclusion definitions (node_modules, .env, uploads)" },
     { "name": "docker-compose.yml", "type": "file", "desc": "Optional containerized environment configuration" },
     { "name": "README.md", "type": "file", "desc": "Main project repository readme file" }

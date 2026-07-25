@@ -3,7 +3,9 @@ import { renderFolderTree } from './modules/explorer.js';
 import { showToast } from './modules/utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const state = { theme: localStorage.getItem('ups_theme') || 'dark' };
+  const requestedTheme = new URLSearchParams(window.location.search).get('theme');
+  const previewTheme = ['light', 'dark'].includes(requestedTheme) ? requestedTheme : null;
+  const state = { theme: previewTheme || localStorage.getItem('ups_theme') || 'light' };
   document.documentElement.setAttribute('data-theme', state.theme);
 
   renderDocGenerator();
@@ -21,6 +23,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     state.theme = state.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', state.theme);
     localStorage.setItem('ups_theme', state.theme);
+  });
+
+  document.querySelectorAll('.setup-stage, .learning-module').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (!details.open) return;
+      const group = details.parentElement;
+      group?.querySelectorAll(':scope > details[open]').forEach(sibling => {
+        if (sibling !== details) sibling.open = false;
+      });
+    });
   });
 
   const modal = document.getElementById('cmd-modal');
@@ -41,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!results) return;
     const clean = query.toLowerCase().trim();
     if (!clean) {
-      results.innerHTML = '<div class="cmd-empty">Search the planner, build method, folder structure, or launch gates.</div>';
+      results.innerHTML = '<div class="cmd-empty">Search tools, planner questions, build method, folder structure, or launch gates.</div>';
       return;
     }
     const matches = sections.filter(section => section.textContent.toLowerCase().includes(clean));
@@ -68,6 +80,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   const guideSteps = {
+    setup: {
+      title: 'Set up your tools',
+      purpose: 'Install the essentials and verify your development computer.'
+    },
     planner: {
       title: 'Plan your system',
       purpose: 'Answer the discovery questions and generate your project kit.'
