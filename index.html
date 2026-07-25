@@ -3,438 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero to Deploy - Plan Any System and Build It With AI</title>
-  <meta name="description" content="Plan any client system, generate an AI-ready context kit, and follow a safe token-efficient path from idea to deployment.">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <title>Zero to Deploy - Plan and Build Any Client System With AI</title>
+  <meta name="description" content="A focused beginner guide for planning, building, testing, and deploying client systems with AI using one universal project structure.">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <div id="app">
-    <!-- Top Header -->
     <header class="header">
-      <div class="brand">
+      <a class="brand" href="#" aria-label="Zero to Deploy home">
         <div class="brand-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
           </svg>
         </div>
         <div>
-          <h1 class="brand-title" style="font-size: 20px; font-weight: 700;">Zero to Deploy</h1>
-          <span class="brand-tag" style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'IBM Plex Mono', monospace;">Universal System Builder</span>
+          <h1 class="brand-title">Zero to Deploy</h1>
+          <span class="brand-tag">Universal System Builder</span>
         </div>
-      </div>
-
-
-
+      </a>
       <div class="header-actions">
-        <div class="header-progress-widget">
-          <div class="progress-info">
-            <span class="progress-label">Guide Progress</span>
-            <span class="progress-val" id="global-progress-text">0% (0/18)</span>
-          </div>
-          <div class="mini-progress-bar">
-            <div class="mini-progress-fill" id="global-progress-fill"></div>
-          </div>
-        </div>
-
-        <button class="btn-icon" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+        <div class="header-path"><span>ONE PATH</span> Plan → Build → Structure → Launch</div>
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle light or dark theme" aria-label="Toggle light or dark theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
           </svg>
         </button>
       </div>
     </header>
 
-    <!-- Minimalist Hero Banner -->
-    <div class="hero">
-      <div class="hero-pill">Built for structured vibe coding</div>
-      <h2 class="hero-title">Plan Any System.<br>Build It With AI.<br>Ship It With Confidence.</h2>
-      <p class="hero-description">
-        Turn a client idea into a clear product brief, reusable project structure, and personalized prompts for any AI coding assistant—from discovery and design to testing, deployment, and handover.
-      </p>
-      <div class="hero-actions">
-        <a class="hero-primary-cta" href="#briefing-wizard">Plan my system</a>
-        <a class="hero-secondary-cta" href="#structure">Explore the structure</a>
-      </div>
-      <div class="hero-features">
-        <div class="hero-feature-item">
-          <div class="hero-feature-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          </div>
-          <div class="hero-feature-text">
-            <h4>Plan Before Code</h4>
-            <p>Capture the problem, users, workflows, risks, and launch scope first.</p>
-          </div>
+    <main>
+      <div class="hero">
+        <div class="hero-pill">One reusable workflow for every client project</div>
+        <h2 class="hero-title">Plan It Clearly.<br>Build It Safely.<br>Deploy It Confidently.</h2>
+        <p class="hero-description">Answer detailed questions about the client, users, workflows, data, screens, security, design, and deployment. Then use the generated project kit to vibe code one verified feature at a time.</p>
+        <div class="hero-actions">
+          <a class="hero-primary-cta" href="#planner">Start planning my system</a>
+          <a class="hero-secondary-cta" href="#structure">View the fixed structure</a>
         </div>
-        <div class="hero-feature-item">
-          <div class="hero-feature-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="hero-features">
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">01</div>
+            <div class="hero-feature-text"><h4>Detailed Discovery</h4><p>Turn client conversations into facts the AI can follow.</p></div>
           </div>
-          <div class="hero-feature-text">
-            <h4>One Stable Structure</h4>
-            <p>Use the same responsibility-based folders for every client system.</p>
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">02</div>
+            <div class="hero-feature-text"><h4>Focused AI Sessions</h4><p>Plan first, then build and test one vertical slice.</p></div>
           </div>
-        </div>
-        <div class="hero-feature-item">
-          <div class="hero-feature-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div class="hero-feature-text">
-            <h4>Token-Smart AI Kit</h4>
-            <p>Generate stable context docs plus small prompts for each focused session.</p>
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">03</div>
+            <div class="hero-feature-text"><h4>One Folder Contract</h4><p>Keep every future project familiar and maintainable.</p></div>
           </div>
         </div>
       </div>
-    </div>
 
-    
-
-
-    <!-- STAGE 3 BANNER -->
-    <div class="stage-banner">
-      <div class="stage-banner-num">STAGE 3</div>
-      <h2 class="stage-banner-title">Plan the Whole System</h2>
-      <p class="stage-banner-desc">Gather client facts once, then generate a reusable build package for any AI assistant.</p>
-    </div>
-
-    <!-- Interactive universal system planner -->
-    <section class="section scrollspy-section" id="briefing-wizard" data-nav="Planner">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Interactive System Planner</div>
-          <h2 class="section-title">From Client Idea to AI-Ready Build Package</h2>
-          <p class="section-subtitle">Describe the system in plain language. Get five context documents, a phased build plan, a master prompt, focused session prompts, and a downloadable project kit.</p>
-        </div>
-      </div>
-      <div id="doc-generator-container">
-        <!-- Hydrated by js/main.js & modules/docGenerator.js -->
-      </div>
-    </section>
-
-    <section class="section scrollspy-section" id="prompt-school" data-nav="Learn">
-      <div class="section-header teaching-header">
-        <div>
-          <div class="section-tag">Learn Before You Prompt</div>
-          <h2 class="section-title">How to Talk to AI Like a Clear Project Manager</h2>
-          <p class="section-subtitle">You do not need programming vocabulary. You need to explain the situation, desired behavior, limits, and what a successful result looks like.</p>
-        </div>
-        <div class="teaching-time">10-minute beginner lesson</div>
-      </div>
-
-      <div class="prompt-formula">
-        <div class="prompt-formula-intro">
-          <span>The reliable prompt formula</span>
-          <h3>Context + Goal + Behavior + Limits + Done</h3>
-          <p>The builder above collects these ingredients and turns them into instructions an AI coding assistant can follow.</p>
-        </div>
-        <div class="prompt-formula-parts">
-          <div><b>01</b><strong>Context</strong><span>What exists and which files matter?</span></div>
-          <div><b>02</b><strong>Goal</strong><span>Why does the user need this?</span></div>
-          <div><b>03</b><strong>Behavior</strong><span>What should happen step by step?</span></div>
-          <div><b>04</b><strong>Limits</strong><span>What must it avoid or preserve?</span></div>
-          <div><b>05</b><strong>Done</strong><span>How will you verify it works?</span></div>
-        </div>
-      </div>
-
-      <div class="teaching-grid">
-        <article class="teaching-card">
-          <span class="teaching-card-num">01</span>
-          <h3>Point to relevant context</h3>
-          <p>Name the requirement document and code paths related to the task. Do not attach the entire project every time.</p>
-          <code>Read context/RULES.md and the login files.</code>
-        </article>
-        <article class="teaching-card">
-          <span class="teaching-card-num">02</span>
-          <h3>Describe the user behavior</h3>
-          <p>Tell the AI who acts, what they do, and what should happen next. Behavior is clearer than vague implementation words.</p>
-          <code>Staff approves a request; the client sees Approved.</code>
-        </article>
-        <article class="teaching-card">
-          <span class="teaching-card-num">03</span>
-          <h3>Ask for a plan first</h3>
-          <p>For a complex feature, let the AI inspect dependencies and propose small steps before it changes files.</p>
-          <code>Analyze first. Propose a plan. Implement step one only.</code>
-        </article>
-        <article class="teaching-card">
-          <span class="teaching-card-num">04</span>
-          <h3>Give the AI a useful role</h3>
-          <p>A role sets priorities. Choose the expertise the task needs, such as accessibility, security, database design, or performance.</p>
-          <code>Act as a security-conscious senior web engineer.</code>
-        </article>
-        <article class="teaching-card">
-          <span class="teaching-card-num">05</span>
-          <h3>Build through small prompts</h3>
-          <p>Finish and test one vertical slice before adding the next. Small sessions cost fewer tokens and are easier to undo.</p>
-          <code>Form → validation → save → test. Then stop.</code>
-        </article>
-      </div>
-
-      <div class="prompt-comparison">
-        <div class="prompt-comparison-head">
+      <section class="section scrollspy-section" id="planner" data-nav="Plan">
+        <div class="section-header focused-section-head">
           <div>
-            <span class="section-tag">Good vs. vague</span>
-            <h3>Specific prompts give the AI fewer reasons to guess</h3>
+            <div class="section-tag">Step 1 · Plan</div>
+            <h2 class="section-title">Describe the Whole System Before Generating Code</h2>
+            <p class="section-subtitle">The questions are grouped into small steps. Answer what you know, mark uncertain decisions, and verify the final documents with the client.</p>
           </div>
-          <p>Task: add a request search experience to a staff dashboard.</p>
+          <div class="section-outcome"><b>OUTPUT</b><span>Context kit + master prompt + build plan + fixed scaffold</span></div>
         </div>
-        <div class="prompt-comparison-grid">
-          <article class="prompt-example prompt-example--bad">
-            <span>Vague prompt</span>
-            <blockquote>“Add search to the dashboard and make it look good.”</blockquote>
-            <ul>
-              <li>No user or reason</li>
-              <li>No files or existing behavior</li>
-              <li>No loading, empty, or error states</li>
-              <li>No way to decide whether it is finished</li>
-            </ul>
-          </article>
-          <article class="prompt-example prompt-example--good">
-            <span>Clear prompt</span>
-            <blockquote>“Act as a senior frontend engineer. Read the dashboard page, request service, and DESIGN.md. Let staff search requests by reference number or client name. Results should update after a short pause, preserve the existing filters, work by keyboard, and show clear empty and error states. Add tests for matching and no-result cases. Plan first, then change only the relevant files.”</blockquote>
-            <ul>
-              <li>Names the role and relevant context</li>
-              <li>Explains user behavior and constraints</li>
-              <li>Defines important interface states</li>
-              <li>Includes verification and scope control</li>
-            </ul>
-          </article>
-        </div>
-      </div>
+        <div id="doc-generator-container"></div>
+      </section>
 
-      <div class="first-project-guide">
-        <div class="first-project-title">
-          <span>First project?</span>
-          <h3>Use this website in this order</h3>
-          <p>You can return to these six steps for every future client system.</p>
-        </div>
-        <ol class="first-project-steps">
-          <li><b>1</b><div><strong>Interview the client</strong><span>Write facts in the planner, not assumptions.</span></div></li>
-          <li><b>2</b><div><strong>Generate the project kit</strong><span>Review every “to be confirmed” item.</span></div></li>
-          <li><b>3</b><div><strong>Approve the AI plan</strong><span>Do not let it code until the milestones make sense.</span></div></li>
-          <li><b>4</b><div><strong>Build one feature</strong><span>Use one focused session and relevant files.</span></div></li>
-          <li><b>5</b><div><strong>Run and test it</strong><span>Paste exact errors, expected behavior, and reproduction steps.</span></div></li>
-          <li><b>6</b><div><strong>Harden and deploy</strong><span>Complete the launch checklist and client handover.</span></div></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Section 5: Phase 0 Checklist -->
-    <section class="section scrollspy-section" id="phase0" data-nav="Checklist">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Checklist</div>
-          <h2 class="section-title">Pre-Development Workflow Checklist</h2>
-          <p class="section-subtitle">Verify your preparation steps before prompting AI to write project code.</p>
-        </div>
-      </div>
-      <div class="phase-steps-grid" id="phase-steps-grid">
-        <!-- Hydrated by js/main.js & modules/phase0.js -->
-      </div>
-    </section>
-
-<!-- Section 8: AI Context Kit -->
-    <section class="section scrollspy-section" id="context-kit" data-nav="Templates">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Briefing Kit</div>
-          <h2 class="section-title">Standard `context/` Folder Templates</h2>
-          <p class="section-subtitle">Reference or copy raw template contents for any of the 5 context docs.</p>
-        </div>
-      </div>
-
-      <div class="context-kit-card">
-        <div class="context-tabs-nav" id="context-tabs-nav">
-          <!-- Hydrated by js/main.js & modules/contextKit.js -->
-        </div>
-        <div class="context-tab-body" id="context-tab-body">
-          <!-- Hydrated by js/main.js & modules/contextKit.js -->
-        </div>
-      </div>
-    </section>
-
-
-    <!-- STAGE 4 & 5 BANNER -->
-    <div class="stage-banner">
-      <div class="stage-banner-num">STAGE 4 & 5</div>
-      <h2 class="stage-banner-title">Scaffold & Vibe Code</h2>
-      <p class="stage-banner-desc">Learn the folder structure, pick UI libraries, and build your AI Prompts.</p>
-    </div>
-
-<!-- Section 6: Folder Structure -->
-    <section class="section scrollspy-section" id="structure" data-nav="Structure">
-      <div class="section-header">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+      <section class="section scrollspy-section" id="build" data-nav="Build">
+        <div class="section-header focused-section-head">
           <div>
-            <div class="section-tag">Architecture</div>
-            <h2 class="section-title">Project Folder Explorer</h2>
-            <p class="section-subtitle">Click any folder or file to learn what it stores in your application.</p>
+            <div class="section-tag">Step 2 · Build</div>
+            <h2 class="section-title">Vibe Code Through Small, Complete Features</h2>
+            <p class="section-subtitle">Do not ask AI to build the entire system. Repeat this loop for every approved feature until the MVP is complete.</p>
           </div>
-          <button class="btn-secondary" id="copy-tree-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy ASCII Tree
-          </button>
+          <div class="section-outcome"><b>RULE</b><span>One outcome, relevant context, real verification</span></div>
         </div>
-      </div>
 
-      <div class="folder-explorer-layout">
-        <div class="tree-card" id="tree-container">
-          <!-- Hydrated by js/main.js & modules/explorer.js -->
+        <div class="build-loop">
+          <article><b>01</b><div><h3>Choose one outcome</h3><p>Example: “Staff can approve a pending request.” Define what the user should observe when it works.</p></div></article>
+          <article><b>02</b><div><h3>Give relevant context</h3><p>Attach `RULES.md`, the relevant PRD and schema sections, plus only the code paths involved.</p></div></article>
+          <article><b>03</b><div><h3>Ask for a plan</h3><p>Have the AI inspect the repository, name assumptions, and identify the smallest vertical slice before editing.</p></div></article>
+          <article><b>04</b><div><h3>Implement the slice</h3><p>Include interface, validation, business rule, storage, permissions, error states, and tests when applicable.</p></div></article>
+          <article><b>05</b><div><h3>Run and verify</h3><p>Require the exact checks it ran. Test the success path, failure path, forbidden role, and important edge cases.</p></div></article>
+          <article><b>06</b><div><h3>Record and continue</h3><p>Update context and handoff notes, commit the working slice, then start the next focused session.</p></div></article>
         </div>
-        <div class="tree-detail-box">
-          <div class="detail-header">
-            <span class="detail-icon">📌</span>
-            <span class="detail-name" id="tree-detail-name">project-root</span>
+
+        <div class="prompt-formula">
+          <div class="prompt-formula-intro">
+            <span>Prompt recipe</span>
+            <h3>Context + Goal + Behavior + Limits + Done</h3>
+            <p>If a prompt contains these five ingredients, the AI has fewer reasons to guess or change unrelated code.</p>
           </div>
-          <p class="detail-desc" id="tree-detail-desc">
-            Select any folder node from the left tree to inspect its responsibility in your website.
-          </p>
-          <div class="script-box">
-            <div class="script-header">
-              <span>Quick Scaffold Tip</span>
-              <span>PowerShell / Bash</span>
+          <div class="prompt-formula-parts">
+            <div><b>01</b><strong>Context</strong><span>Which docs and files matter?</span></div>
+            <div><b>02</b><strong>Goal</strong><span>Why does the user need it?</span></div>
+            <div><b>03</b><strong>Behavior</strong><span>What happens step by step?</span></div>
+            <div><b>04</b><strong>Limits</strong><span>What must remain unchanged?</span></div>
+            <div><b>05</b><strong>Done</strong><span>What checks must pass?</span></div>
+          </div>
+        </div>
+
+        <div class="context-routing">
+          <div class="context-routing-intro">
+            <span class="section-tag">Save tokens with context routing</span>
+            <h3>Give the AI only what the current task needs</h3>
+            <p>The full context kit stays in the repository. Individual sessions reference the relevant documents and code paths.</p>
+          </div>
+          <div class="context-routing-list">
+            <div><code>PRD.md</code><span>Scope, users, behavior, and acceptance</span></div>
+            <div><code>ARCHITECTURE.md</code><span>Layers, data flow, and file placement</span></div>
+            <div><code>SCHEMA.md</code><span>Data, APIs, permissions, and validation</span></div>
+            <div><code>DESIGN.md</code><span>Screens, components, states, and accessibility</span></div>
+            <div><code>RULES.md</code><span>Always include for implementation work</span></div>
+          </div>
+        </div>
+
+        <div class="prompt-comparison">
+          <div class="prompt-comparison-head">
+            <div><span class="section-tag">Good vs. vague</span><h3>Describe observable behavior, not just a feature name</h3></div>
+            <p>Example task: add approval to a staff dashboard.</p>
+          </div>
+          <div class="prompt-comparison-grid">
+            <article class="prompt-example prompt-example--bad">
+              <span>Vague</span>
+              <blockquote>“Add an approval feature and make it work.”</blockquote>
+              <ul><li>No relevant files</li><li>No permissions</li><li>No failure behavior</li><li>No completion checks</li></ul>
+            </article>
+            <article class="prompt-example prompt-example--good">
+              <span>Clear</span>
+              <blockquote>“Read RULES.md, the approval requirements in PRD.md, SCHEMA.md, and the request module. Staff may approve pending requests assigned to them; clients cannot approve. Save the approver and time, prevent duplicate approval, show success and error states, and add tests for allowed, forbidden, and already-approved cases. Inspect first, propose a plan, and change only relevant files.”</blockquote>
+              <ul><li>Routes the right context</li><li>Defines behavior and permissions</li><li>Covers edge and error states</li><li>Requires tests and scope control</li></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section scrollspy-section" id="structure" data-nav="Structure">
+        <div class="section-header focused-section-head">
+          <div>
+            <div class="section-tag">Step 3 · Structure</div>
+            <h2 class="section-title">Use This Folder Contract for Every Project</h2>
+            <p class="section-subtitle">Framework-specific filenames may change, but these responsibilities stay in familiar places. The generated prompt instructs AI to follow this structure.</p>
+          </div>
+          <button class="btn-secondary" id="copy-tree-btn">${'Copy folder tree'}</button>
+        </div>
+        <div class="folder-explorer-layout">
+          <div class="tree-card" id="tree-container"></div>
+          <div class="tree-detail-box">
+            <div class="detail-header"><span class="detail-icon">i</span><span class="detail-name" id="tree-detail-name">project-root</span></div>
+            <p class="detail-desc" id="tree-detail-desc">Select a folder or file to understand its single responsibility.</p>
+            <div class="structure-rules">
+              <h3>Rules the AI must follow</h3>
+              <ul>
+                <li>Pages compose components; they do not contain every responsibility.</li>
+                <li>Client API calls live in `client/src/services/`.</li>
+                <li>Business logic lives in `server/src/services/`.</li>
+                <li>Roles, statuses, and fixed values live in `constants/`.</li>
+                <li>Every database change gets a migration and schema update.</li>
+                <li>Project facts stay in `context/`; session notes stay in `docs/handoffs/`.</li>
+              </ul>
             </div>
-            <div class="code-pre"># Note: Generate scaffolding scripts using the prompt builder above!</div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-<!-- Section 4: AI Prompt Generator -->
-    <section class="section scrollspy-section" id="vibe-coding" data-nav="Prompts">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">AI Setup</div>
-          <h2 class="section-title">Focused AI Workflow Prompts</h2>
-          <p class="section-subtitle">Use concise, task-specific prompts during implementation. Compatible with Codex, ChatGPT, Claude, Cursor, Copilot, Gemini, and other coding assistants.</p>
+      <section class="section scrollspy-section" id="launch" data-nav="Launch">
+        <div class="section-header focused-section-head">
+          <div>
+            <div class="section-tag">Step 4 · Launch</div>
+            <h2 class="section-title">Do Not Deploy Until These Gates Pass</h2>
+            <p class="section-subtitle">AI can help perform the checks, but a human must verify sensitive data, permissions, backups, client acceptance, and production access.</p>
+          </div>
+          <div class="section-outcome"><b>FINISH</b><span>Tested release + rollback plan + client handover</span></div>
         </div>
-      </div>
-      <div id="vibe-coding-container">
-        <!-- Hydrated by js/main.js & modules/vibeCoding.js -->
-      </div>
-    </section>
-
-<!-- Section 7: Core Principles -->
-    <section class="section scrollspy-section" id="principles" data-nav="Principles">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Best Practices</div>
-          <h2 class="section-title">6 Golden Principles for Clean Code</h2>
-          <p class="section-subtitle">Simple rules to ensure your AI-generated code stays organized and maintainable.</p>
+        <div class="launch-gates">
+          <article><span>Gate 01</span><h3>Requirements accepted</h3><ul><li>MVP and non-goals approved</li><li>Every feature has acceptance checks</li><li>Roles and permissions confirmed</li><li>Open assumptions resolved</li></ul></article>
+          <article><span>Gate 02</span><h3>System verified</h3><ul><li>Success and failure paths tested</li><li>Forbidden access tested</li><li>Responsive and accessible</li><li>No critical errors or fake fallbacks</li></ul></article>
+          <article><span>Gate 03</span><h3>Production prepared</h3><ul><li>Secrets stored outside code</li><li>Migration and backup tested</li><li>Logs contain no sensitive data</li><li>Monitoring and rollback documented</li></ul></article>
+          <article><span>Gate 04</span><h3>Client handed over</h3><ul><li>Staging accepted in writing</li><li>Admin and user guides delivered</li><li>Credential ownership transferred</li><li>Support period and backlog recorded</li></ul></article>
         </div>
-      </div>
-      <div class="principles-grid" id="principles-grid">
-        <!-- Hydrated by js/main.js & modules/principles.js -->
-      </div>
-    </section>
-
-<!-- Section 9: UI Component Libraries -->
-    <section class="section scrollspy-section" id="ui-libraries" data-nav="UI Libs">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">UI System</div>
-          <h2 class="section-title">Free UI Component Options</h2>
-          <p class="section-subtitle">Free tools to make your website look modern and professional.</p>
+        <div class="final-reminder">
+          <strong>Production rule</strong>
+          <p>Vibe code the prototype. Review, test, secure, back up, and obtain client approval before shipping the production system.</p>
+          <a href="#planner">Plan another system ↑</a>
         </div>
-      </div>
+      </section>
+    </main>
 
-      <div class="ui-filters">
-        <div class="filter-tags">
-          <button class="filter-chip active" data-filter="all">All Libraries</button>
-          <button class="filter-chip" data-filter="recommended">Team Default</button>
-          <button class="filter-chip" data-filter="tailwind">Tailwind CSS</button>
-          <button class="filter-chip" data-filter="admin panels">Admin Dashboards</button>
-          <button class="filter-chip" data-filter="headless">Headless Primitives</button>
+    <nav class="timeline-nav" id="timeline-nav" aria-label="Your four-step system building guide">
+      <div class="guide-nav-status" aria-live="polite">
+        <div class="guide-nav-copy">
+          <span id="guide-step-count">STEP 1 OF 4</span>
+          <strong id="guide-step-title">Plan your system</strong>
+          <small id="guide-step-purpose">Answer the discovery questions and generate your project kit.</small>
         </div>
+        <div class="guide-nav-progress" aria-hidden="true"><span id="guide-nav-progress-fill"></span></div>
       </div>
-
-      <div class="ui-libraries-grid" id="ui-libraries-grid">
-        <!-- Hydrated by js/main.js & modules/uiLibraries.js -->
-      </div>
-
-      <div class="quiz-card">
-        <h3 class="quiz-title">Unsure which design library to pick?</h3>
-        <p class="quiz-desc">Click your project type below to get an instant recommendation:</p>
-        <div class="quiz-options">
-          <button class="quiz-btn" data-choice="standard">Standard Client App</button>
-          <button class="quiz-btn" data-choice="fast">Rapid MVP / Demo</button>
-          <button class="quiz-btn" data-choice="admin">Data-Heavy Admin Portal</button>
-          <button class="quiz-btn" data-choice="landing">Landing Page with Visual Flair</button>
-        </div>
-        <div class="quiz-result" id="quiz-result"></div>
-      </div>
-    </section>
-
-
-    <!-- STAGE 6 BANNER -->
-    <div class="stage-banner">
-      <div class="stage-banner-num">STAGE 6</div>
-      <h2 class="stage-banner-title">Launch & Appendix</h2>
-      <p class="stage-banner-desc">Checklist for deployment and technical jargon buster.</p>
-    </div>
-
-<!-- Section 10: Deployment Checklist -->
-    <section class="section scrollspy-section" id="deployment" data-nav="Launch">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Launch</div>
-          <h2 class="section-title">Deployment-Ready Handover Checklist</h2>
-          <p class="section-subtitle">Final verification steps before publishing your website live!</p>
-        </div>
-      </div>
-      <div id="dep-checklist-container">
-        <!-- Hydrated by js/main.js & modules/deployment.js -->
-      </div>
-    </section>
-
-<!-- Section 3: Tech Jargon Buster Glossary -->
-    <section class="section scrollspy-section" id="glossary" data-nav="Glossary">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">ELI5 Glossary</div>
-          <h2 class="section-title">Tech Jargon Buster</h2>
-          <p class="section-subtitle">Don't understand a technical word? Search or browse beginner-friendly plain English explanations.</p>
-        </div>
-      </div>
-      <div id="glossary-container">
-        <!-- Hydrated by js/main.js & modules/glossary.js -->
-      </div>
-    </section>
-
-    <!-- Floating Bottom Navigation -->
-    <nav class="timeline-nav" id="timeline-nav">
       <div class="timeline-track">
-        <div class="tl-brand">Zero <strong>to Deploy</strong></div>
-        <div class="nav-links-wrap">
-          <div class="nav-highlighter" id="nav-highlighter"></div>
-          <!-- Will be dynamically populated by JS based on .scrollspy-section tags -->
-        </div>
-        <button class="btn-icon" id="cmd-palette-btn" title="Search (Ctrl+K)" style="margin-left: 12px; width: 34px; height: 34px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
+        <button class="guide-nav-arrow" id="guide-prev-section" type="button" aria-label="Go to previous guide step" disabled>
+          <span aria-hidden="true">←</span><small>Previous</small>
+        </button>
+        <div class="nav-links-wrap"><div class="nav-highlighter" id="nav-highlighter"></div></div>
+        <button class="guide-nav-arrow" id="guide-next-section" type="button" aria-label="Go to next guide step">
+          <small>Next</small><span aria-hidden="true">→</span>
+        </button>
+        <button class="btn-icon" id="cmd-palette-btn" title="Search this guide" aria-label="Search this guide">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
       </div>
     </nav>
 
-    <!-- Command Palette Modal -->
     <div class="cmd-modal-overlay" id="cmd-modal">
       <div class="cmd-modal-content">
         <div class="cmd-modal-header">
-          <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input type="text" id="cmd-input" placeholder="Search steps, glossaries, templates..." autocomplete="off">
+          <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="cmd-input" placeholder="Search this focused guide..." autocomplete="off">
           <span class="cmd-kbd">ESC</span>
         </div>
-        <div class="cmd-results" id="cmd-results">
-          <!-- Populated by JS -->
-        </div>
+        <div class="cmd-results" id="cmd-results"></div>
       </div>
     </div>
-
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script type="module" src="js/main.js?v=2"></script>
+  <script type="module" src="js/main.js?v=5"></script>
 </body>
 </html>

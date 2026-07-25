@@ -31,7 +31,7 @@
             { "name": "pages", "type": "folder", "desc": "Page views composed of components (Dashboard, Settings, Login)" },
             { "name": "hooks", "type": "folder", "desc": "Reusable UI logic & composables (useAuth, useFetch, useForm)" },
             { "name": "services", "type": "folder", "desc": "Isolated API requests & HTTP calls (api.js, authService.js)" },
-            { "name": "context", "type": "folder", "desc": "Global state management (authContext, themeContext, store)" },
+            { "name": "state", "type": "folder", "desc": "Global client state (authentication, theme, shared application state)" },
             { "name": "utils", "type": "folder", "desc": "Helper functions, formatters, validators, date utils" },
             { "name": "constants", "type": "folder", "desc": "Enums, roles, status labels - NEVER hardcode inline!" },
             { "name": "config", "type": "folder", "desc": "Environment-based configuration (API base URL, feature flags)" },
@@ -58,7 +58,8 @@
             { "name": "middlewares", "type": "folder", "desc": "Auth verification, rate limiters, error handlers, validation" },
             { "name": "config", "type": "folder", "desc": "Database connection parameters, env loaders, service clients" },
             { "name": "utils", "type": "folder", "desc": "Backend utilities (password hashing, JWT signers, response wrappers)" },
-            { "name": "validators", "type": "folder", "desc": "Input sanitization & request payload validation schemas" }
+            { "name": "validators", "type": "folder", "desc": "Input sanitization & request payload validation schemas" },
+            { "name": "constants", "type": "folder", "desc": "Backend roles, permissions, statuses, limits, and fixed values" }
           ]
         },
         { "name": "uploads", "type": "folder", "desc": "User-uploaded files directory (GITIGNORED)" },
@@ -81,6 +82,9 @@
       "type": "folder",
       "desc": "Human-readable documentation for developers & client IT",
       "children": [
+        { "name": "decisions", "type": "folder", "desc": "Architecture decision records explaining important technical choices" },
+        { "name": "handoffs", "type": "folder", "desc": "Compact milestone summaries for starting fresh AI sessions" },
+        { "name": "BUILD_PLAN.md", "type": "file", "desc": "Approved implementation phases, feature order, and acceptance gates" },
         { "name": "README.md", "type": "file", "desc": "Project setup guide, prerequisites, and startup commands" },
         { "name": "API.md", "type": "file", "desc": "Complete endpoint list with request/response JSON payloads" },
         { "name": "DEPLOYMENT.md", "type": "file", "desc": "Server deployment checklist, environment variables, Nginx configs" },
@@ -90,7 +94,7 @@
     {
       "name": "context",
       "type": "folder",
-      "desc": "AI Briefing Kit folder - referenced during AI prompting (Cursor, Claude, Antigravity)",
+      "desc": "Stable AI Briefing Kit referenced by any coding assistant",
       "children": [
         { "name": "PRD.md", "type": "file", "desc": "Product Requirements Document (Goals, MVP, Roadmap)" },
         { "name": "ARCHITECTURE.md", "type": "file", "desc": "System Architecture (Diagrams, Pipeline, Layers, RBAC)" },
@@ -99,7 +103,18 @@
         { "name": "RULES.md", "type": "file", "desc": "Coding Standards (SOLID, Naming, Error Handling, Types)" }
       ]
     },
-    { "name": "tests", "type": "folder", "desc": "Unit & integration test suites" },
+    {
+      "name": "tests",
+      "type": "folder",
+      "desc": "Automated verification grouped by testing scope",
+      "children": [
+        { "name": "unit", "type": "folder", "desc": "Fast tests for isolated business rules and utilities" },
+        { "name": "integration", "type": "folder", "desc": "Tests for database, API, and service boundaries" },
+        { "name": "e2e", "type": "folder", "desc": "Critical workflows tested through the user interface" },
+        { "name": "fixtures", "type": "folder", "desc": "Safe reusable test data containing no client information" }
+      ]
+    },
+    { "name": "scripts", "type": "folder", "desc": "Repeatable setup, validation, backup, migration, and deployment helpers" },
     { "name": ".env.example", "type": "file", "desc": "Environment variable template (No actual secret keys!)" },
     { "name": ".gitignore", "type": "file", "desc": "Git exclusion definitions (node_modules, .env, uploads)" },
     { "name": "docker-compose.yml", "type": "file", "desc": "Optional containerized environment configuration" },

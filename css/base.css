@@ -68,8 +68,6 @@ body {
 ::selection { background: var(--gold); color: #fff; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4 { font-family: 'Archivo Black', sans-serif; font-weight: 400; letter-spacing: -0.02em; }
-.section-head h2 { font-family: 'Helvetica', 'Arial', sans-serif; }
-.mono { font-family: 'IBM Plex Mono', monospace; }
 :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 
 /* ── Light Mode Specific Typography Overrides ── */
@@ -78,7 +76,6 @@ h1, h2, h3, h4 { font-family: 'Archivo Black', sans-serif; font-weight: 400; let
 [data-theme="light"] h3,
 [data-theme="light"] h4 { color: #0F172A; }
 
-[data-theme="light"] .hero-sub,
 [data-theme="light"] p { color: #334155; }
 
 /* ── Custom Scrollbar (hidden globally like portfolio) ── */

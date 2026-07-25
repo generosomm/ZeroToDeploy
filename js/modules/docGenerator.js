@@ -8,20 +8,34 @@ const STORAGE_KEY = 'ups_planner_v2';
 
 const DEFAULTS = {
   appName: '',
+  clientName: '',
+  industry: '',
   projectType: 'Business management system',
   summary: '',
   problem: '',
+  currentProcess: '',
   roles: '',
+  permissions: '',
   features: '',
   nonGoals: '',
+  pages: '',
   workflows: '',
   entities: '',
+  notifications: '',
+  reports: '',
+  integrations: '',
+  dataMigration: '',
   successMetrics: '',
+  expectedScale: '',
+  compliance: '',
   stack: 'Let the AI recommend the simplest maintainable stack',
   deployment: 'Recommend based on the project and budget',
   auth: 'Email and password with role-based access',
   sensitivity: 'Standard business data',
   designDirection: 'Clean, modern, trustworthy, and easy to use',
+  branding: '',
+  languages: 'English',
+  accessibility: 'Keyboard accessible, readable contrast, and mobile friendly',
   platforms: 'Responsive web: desktop, tablet, and mobile',
   constraints: 'Keep recurring costs low; prefer free and open-source tools',
   aiTool: 'Any AI coding assistant',
@@ -37,12 +51,15 @@ const GROUPS = [
     hint: 'Name the idea and the real-world problem it must solve.',
     fields: [
       { key: 'appName', label: 'System name', placeholder: 'e.g. Northstar Clinic Portal' },
+      { key: 'clientName', label: 'Client or organization', placeholder: 'e.g. Northstar Family Clinic' },
+      { key: 'industry', label: 'Industry or service', placeholder: 'e.g. Healthcare, retail, local government' },
       {
         key: 'projectType', label: 'System type', type: 'select',
         options: ['Business management system', 'Client portal', 'E-commerce platform', 'Booking or reservation system', 'Inventory or POS system', 'Admin dashboard', 'Marketing website', 'Mobile application', 'API or backend service', 'Automation or internal tool', 'Other custom software']
       },
       { key: 'summary', label: 'One-sentence idea', placeholder: 'What should this system make possible?', wide: true },
-      { key: 'problem', label: 'Current problem or manual process', type: 'textarea', placeholder: 'What does the client do today? Where is time lost? What keeps going wrong?', wide: true }
+      { key: 'problem', label: 'Main problem', type: 'textarea', placeholder: 'Where is time lost? What errors or frustrations keep happening?', wide: true },
+      { key: 'currentProcess', label: 'How the work is done today', type: 'textarea', placeholder: 'Describe the current paper, spreadsheet, chat, email, or walk-in process.', wide: true }
     ]
   },
   {
@@ -51,8 +68,10 @@ const GROUPS = [
     hint: 'Separate the first useful release from ideas that can wait.',
     fields: [
       { key: 'roles', label: 'Users and roles', type: 'textarea', placeholder: 'Admin manages users; Staff processes requests; Client tracks status' },
+      { key: 'permissions', label: 'What each role can and cannot do', type: 'textarea', placeholder: 'Admin sees everything; Staff sees assigned records; Clients see only their own records' },
       { key: 'features', label: 'Must-have launch features', type: 'textarea', placeholder: 'One per line:\nLogin\nSubmit request\nReview dashboard\nExport report' },
       { key: 'nonGoals', label: 'Not included in the first release', type: 'textarea', placeholder: 'Online payments, native mobile app, AI recommendations' },
+      { key: 'pages', label: 'Main pages or screens', type: 'textarea', placeholder: 'Login, Admin dashboard, Request form, Request details, Reports, Settings' },
       { key: 'successMetrics', label: 'How will you know it worked?', type: 'textarea', placeholder: 'Cut processing time from 2 days to 2 hours; zero duplicate records' }
     ]
   },
@@ -63,11 +82,16 @@ const GROUPS = [
     fields: [
       { key: 'workflows', label: 'Key user workflows', type: 'textarea', placeholder: 'Client submits request -> staff reviews -> admin approves -> client gets notified' },
       { key: 'entities', label: 'Important records or data', type: 'textarea', placeholder: 'Users, requests, approvals, attachments, audit logs' },
+      { key: 'notifications', label: 'Notifications and triggers', type: 'textarea', placeholder: 'Email client after approval; alert staff when a new request arrives' },
+      { key: 'reports', label: 'Reports, search, and exports', type: 'textarea', placeholder: 'Monthly totals, status filters, CSV export, printable summary' },
+      { key: 'integrations', label: 'External tools or services', type: 'textarea', placeholder: 'Email provider, payment gateway, Google Calendar, existing API — or None' },
+      { key: 'dataMigration', label: 'Existing data to import', type: 'textarea', placeholder: 'Excel customer list, old MySQL records — or None' },
       {
         key: 'sensitivity', label: 'Data sensitivity', type: 'select',
         options: ['Public or low-risk data', 'Standard business data', 'Personal or confidential data', 'Payments or financial data', 'Health, government, or regulated data']
       },
-      { key: 'auth', label: 'Login and access rules', placeholder: 'Role-based access; admins invite staff; clients self-register' }
+      { key: 'auth', label: 'Login and access rules', placeholder: 'Role-based access; admins invite staff; clients self-register' },
+      { key: 'compliance', label: 'Privacy, audit, or retention requirements', type: 'textarea', placeholder: 'Keep an audit trail; delete records after 5 years; obtain consent — or Not sure' }
     ]
   },
   {
@@ -83,6 +107,7 @@ const GROUPS = [
         key: 'deployment', label: 'Deployment target', type: 'select',
         options: ['Recommend based on the project and budget', 'Shared hosting / cPanel', 'Vercel or Netlify', 'Railway or Render', 'VPS with Docker', 'AWS, Azure, or Google Cloud', 'Local network / on-premise']
       },
+      { key: 'expectedScale', label: 'Expected usage', placeholder: 'e.g. 20 staff, 2,000 clients, around 100 requests per day' },
       { key: 'constraints', label: 'Budget, deadline, integrations, or limits', type: 'textarea', placeholder: '6-week MVP; free services when possible; must import existing Excel files' },
       { key: 'platforms', label: 'Devices and platforms', placeholder: 'Responsive web for office desktops and client phones' }
     ]
@@ -93,6 +118,9 @@ const GROUPS = [
     hint: 'Set the visual direction and how the coding assistant should collaborate.',
     fields: [
       { key: 'designDirection', label: 'Visual and UX direction', type: 'textarea', placeholder: 'Describe the tone, brand, accessibility needs, and sites you like.' },
+      { key: 'branding', label: 'Brand assets and visual references', type: 'textarea', placeholder: 'Logo, colors, fonts, screenshots, or websites the client likes' },
+      { key: 'languages', label: 'Languages and content', placeholder: 'English only, English and Filipino, or other languages' },
+      { key: 'accessibility', label: 'Accessibility needs', placeholder: 'Keyboard access, large text, high contrast, screen-reader support' },
       {
         key: 'aiTool', label: 'AI coding tool', type: 'select',
         options: ['Any AI coding assistant', 'Codex', 'ChatGPT', 'Claude Code', 'Cursor', 'GitHub Copilot', 'Gemini']
@@ -128,11 +156,21 @@ function generate(state) {
 ## Executive summary
 ${valueOr(state.summary, `${name} is a ${state.projectType.toLowerCase()} that solves the client's documented operational problem.`)}
 
+## Client context
+- Organization: ${valueOr(state.clientName)}
+- Industry or service: ${valueOr(state.industry)}
+
 ## Problem statement
 ${valueOr(state.problem)}
 
+## Current process
+${valueOr(state.currentProcess)}
+
 ## Target users and permissions
 ${bullets(state.roles, 'User roles and permissions require client confirmation')}
+
+### Permission boundaries
+${bullets(state.permissions, 'Define what every role can view, create, edit, approve, export, and delete')}
 
 ## MVP features
 ${bullets(state.features, 'MVP feature list requires client confirmation')}
@@ -140,8 +178,18 @@ ${bullets(state.features, 'MVP feature list requires client confirmation')}
 ## Non-goals for the first release
 ${bullets(state.nonGoals, 'Anything not listed in the approved MVP is out of scope')}
 
+## Main pages or screens
+${bullets(state.pages, 'Screen list requires client confirmation')}
+
 ## Key workflows
 ${numbered(state.workflows, 'Primary end-to-end workflow requires client confirmation')}
+
+## Notifications and reports
+### Notifications
+${bullets(state.notifications, 'Notification triggers require confirmation')}
+
+### Reports, search, and exports
+${bullets(state.reports, 'Reporting requirements require confirmation')}
 
 ## Success metrics
 ${bullets(state.successMetrics, 'Define measurable adoption, speed, accuracy, or cost targets')}
@@ -153,6 +201,7 @@ ${bullets(state.constraints, 'No confirmed constraints yet')}
 - Platforms: ${valueOr(state.platforms)}
 - Deployment: ${state.deployment}
 - Initial technology direction: ${state.stack}
+- Expected usage: ${valueOr(state.expectedScale)}
 
 ## Definition of done
 - Every approved MVP feature has acceptance criteria and a passing verification.
@@ -172,6 +221,9 @@ This document defines constraints, not permission to invent requirements. Record
 - Deployment target: ${state.deployment}
 - Client platforms: ${valueOr(state.platforms)}
 - Authentication: ${valueOr(state.auth)}
+- Expected usage: ${valueOr(state.expectedScale)}
+- External integrations: ${valueOr(state.integrations)}
+- Existing data migration: ${valueOr(state.dataMigration)}
 
 ## Required layers
 1. **Presentation** - pages/screens composed from reusable components.
@@ -191,7 +243,7 @@ This document defines constraints, not permission to invent requirements. Record
 - \`tests/\`: unit, integration, end-to-end, fixtures.
 - \`scripts/\`: safe repeatable setup, validation, backup, and deployment helpers.
 
-Remove an application layer only after documenting why it is not applicable. Preserve the remaining responsibility-based names across projects.
+Keep every top-level folder in this contract for every project. If a layer is not active yet, retain its folder with a short README explaining that it is intentionally inactive. Do not rename or remove contract folders.
 
 ## Cross-cutting rules
 - Validate at every trust boundary.
@@ -210,6 +262,9 @@ ${bullets(state.entities, 'Domain entities require discovery')}
 ## Access and sensitivity
 - Data classification: ${state.sensitivity}
 - Authentication and access: ${valueOr(state.auth)}
+- Role boundaries: ${valueOr(state.permissions)}
+- Privacy, audit, or retention: ${valueOr(state.compliance)}
+- Existing data to import: ${valueOr(state.dataMigration)}
 - Baseline: least privilege, server-side authorization, audited important mutations, and no secrets or personal data in logs.
 
 ## Schema workflow
@@ -229,12 +284,20 @@ Before implementation:
 
 ## Candidate workflows to translate into contracts
 ${bullets(state.workflows, 'Primary workflow requires confirmation')}
+
+## External integrations
+${bullets(state.integrations, 'No external integrations confirmed')}
 `;
 
   const design = `# Design System - ${name}
 
 ## Product direction
 ${valueOr(state.designDirection)}
+
+## Brand and content
+- Brand references: ${valueOr(state.branding)}
+- Languages: ${valueOr(state.languages)}
+- Accessibility: ${valueOr(state.accessibility)}
 
 ## Supported experiences
 ${valueOr(state.platforms)}
@@ -294,7 +357,7 @@ Data classification is **${state.sensitivity}**. Authentication, payments, perso
 - Define acceptance criteria for every MVP feature.
 
 ## Phase 1 - Foundation
-- Create the universal directory structure and version control.
+- Create the exact universal directory structure and version control. Keep every contract folder, even when a layer is intentionally inactive.
 - Lock runtime versions, environment validation, linting, formatting, and test commands.
 - Establish design tokens, application shell, error handling, logging, and health checks.
 - Draft the schema, migrations, safe seed data, and authentication boundary.
@@ -324,18 +387,31 @@ For each slice: plan -> implement -> test success and failure paths -> review pe
   const master = `You are my senior software architect and implementation partner for **${name}**.
 
 PROJECT
+- Client: ${valueOr(state.clientName)}
+- Industry: ${valueOr(state.industry)}
 - Type: ${state.projectType}
 - Goal: ${valueOr(state.summary)}
 - Problem: ${valueOr(state.problem)}
+- Current process: ${valueOr(state.currentProcess)}
 - Users: ${valueOr(state.roles)}
+- Permission boundaries: ${valueOr(state.permissions)}
 - MVP: ${valueOr(state.features)}
 - Non-goals: ${valueOr(state.nonGoals)}
+- Screens: ${valueOr(state.pages)}
 - Key workflows: ${valueOr(state.workflows)}
 - Data: ${valueOr(state.entities)}
+- Notifications: ${valueOr(state.notifications)}
+- Reports and exports: ${valueOr(state.reports)}
+- Integrations: ${valueOr(state.integrations)}
+- Data migration: ${valueOr(state.dataMigration)}
 - Stack direction: ${state.stack}
 - Deployment: ${state.deployment}
+- Expected usage: ${valueOr(state.expectedScale)}
 - Constraints: ${valueOr(state.constraints)}
 - Data sensitivity: ${state.sensitivity}
+- Compliance and retention: ${valueOr(state.compliance)}
+- Design and branding: ${valueOr(state.designDirection)}; ${valueOr(state.branding)}
+- Languages and accessibility: ${valueOr(state.languages)}; ${valueOr(state.accessibility)}
 - My level: ${state.skillLevel}; computer: ${state.operatingSystem}
 
 SOURCE OF TRUTH
@@ -349,6 +425,7 @@ Read these repository files before proposing code:
 
 WORKING AGREEMENT
 - ${state.approvalRule}.
+- Use the exact universal folder contract in \`context/ARCHITECTURE.md\`. Do not rename or remove its top-level folders; keep an inactive layer with a short explanatory README.
 - Inspect the repository before acting; do not assume files or dependencies exist.
 - Do not build the whole product in one pass. Work in the smallest complete vertical slice.
 - Do not invent missing business rules. Mark assumptions and ask at most 3 blocking questions.
@@ -444,7 +521,7 @@ Do not attach every project file to every prompt. Give the AI the task, acceptan
 |       |-- components/ui/
 |       |-- layouts/
 |       |-- pages/
-|       |-- hooks-or-composables/
+|       |-- hooks/
 |       |-- services/
 |       |-- state/
 |       |-- utils/
@@ -489,7 +566,7 @@ Do not attach every project file to every prompt. Give the AI the task, acceptan
 |-- .gitignore
 \`-- README.md
 
-Adapt framework-specific filenames inside these stable responsibility folders. Remove client or server only when the approved architecture truly does not need it.`;
+Adapt framework-specific filenames inside these stable responsibility folders, but keep every top-level contract folder in every project. If a layer is inactive, retain its folder with a short README explaining why.`;
 
   return {
     start: { filename: 'START_HERE.md', label: 'Start here', content: start },
@@ -602,7 +679,7 @@ export function renderDocGenerator() {
             <h4>Describe the idea in everyday language</h4>
             <p>Explain the outcome for the client. Do not worry about databases, APIs, or frameworks yet.</p>
           </div>
-          <div class="planner-fields">${renderFields(['appName', 'projectType', 'summary', 'problem'])}</div>
+          <div class="planner-fields">${renderFields(['appName', 'clientName', 'industry', 'projectType', 'summary', 'problem', 'currentProcess'])}</div>
           <div class="guided-example">
             <b>Example answer</b>
             <p>“A clinic portal where patients request appointments and staff confirm schedules without using phone calls and spreadsheets.”</p>
@@ -615,7 +692,7 @@ export function renderDocGenerator() {
             <h4>Decide who uses it and what launches first</h4>
             <p>List only the features needed for the first useful version. Extra ideas can wait.</p>
           </div>
-          <div class="planner-fields">${renderFields(['roles', 'features', 'nonGoals', 'successMetrics'])}</div>
+          <div class="planner-fields">${renderFields(['roles', 'permissions', 'features', 'nonGoals', 'pages', 'successMetrics'])}</div>
           <div class="guided-example">
             <b>Good feature format</b>
             <p>“Patient can request an appointment” is clearer than “appointment system” because it names the user and behavior.</p>
@@ -628,7 +705,7 @@ export function renderDocGenerator() {
             <h4>Explain what happens and what information is stored</h4>
             <p>Describe the journey like a story. This prevents the AI from inventing business rules.</p>
           </div>
-          <div class="planner-fields">${renderFields(['workflows', 'entities', 'sensitivity', 'auth'])}</div>
+          <div class="planner-fields">${renderFields(['workflows', 'entities', 'notifications', 'reports', 'integrations', 'dataMigration', 'sensitivity', 'auth', 'compliance'])}</div>
           <div class="guided-example">
             <b>Workflow example</b>
             <p>“Patient sends request → receptionist checks schedule → doctor confirms → patient receives the final time.”</p>
@@ -642,7 +719,7 @@ export function renderDocGenerator() {
             <p>The defaults are safe for beginners. Only change an option when the client or hosting provider requires it.</p>
           </div>
           <div class="planner-fields">
-            ${renderFields(['stack', 'deployment', 'constraints', 'platforms', 'designDirection', 'skillLevel', 'operatingSystem', 'approvalRule'])}
+            ${renderFields(['stack', 'deployment', 'expectedScale', 'constraints', 'platforms', 'designDirection', 'branding', 'languages', 'accessibility', 'skillLevel', 'operatingSystem', 'approvalRule'])}
           </div>
           <div class="guided-tip"><b>Beginner recommendation:</b> Let the AI recommend one maintainable stack after it reads your requirements. Ask it to explain the choice before writing code.</div>
         </section>
@@ -702,10 +779,10 @@ export function renderDocGenerator() {
   const previousButton = document.getElementById('guided-prev-btn');
   const nextButton = document.getElementById('guided-next-btn');
   const stepCount = document.getElementById('guided-step-count');
-  const important = ['appName', 'summary', 'problem', 'roles', 'features', 'workflows', 'entities', 'successMetrics', 'constraints', 'designDirection'];
+  const important = ['appName', 'clientName', 'summary', 'problem', 'currentProcess', 'roles', 'permissions', 'features', 'pages', 'workflows', 'entities', 'successMetrics', 'constraints', 'designDirection'];
   const nextLabels = ['Next: describe the idea →', 'Next: users and features →', 'Next: workflow and data →', 'Next: build choices →', 'Generate my prompt →'];
 
-  const showStep = target => {
+  const showStep = (target, shouldScroll = true) => {
     currentStep = Math.max(0, Math.min(5, target));
     container.querySelectorAll('.guided-panel').forEach((panel, index) => panel.classList.toggle('active', index === currentStep));
     container.querySelectorAll('.guided-progress-step').forEach((step, index) => {
@@ -718,7 +795,7 @@ export function renderDocGenerator() {
     nextButton.hidden = currentStep === 5;
     if (currentStep < 5) nextButton.textContent = nextLabels[currentStep];
     if (currentStep === 5) update();
-    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (shouldScroll) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const update = () => {
@@ -813,7 +890,36 @@ export function renderDocGenerator() {
     projectDocs.folder('decisions');
     projectDocs.folder('handoffs');
 
-    ['client', 'server', 'database', 'tests', 'scripts'].forEach(folder => zip.folder(folder));
+    [
+      'client/public',
+      'client/src/assets',
+      'client/src/components/ui',
+      'client/src/layouts',
+      'client/src/pages',
+      'client/src/hooks',
+      'client/src/services',
+      'client/src/state',
+      'client/src/utils',
+      'client/src/constants',
+      'client/src/config',
+      'server/src/controllers',
+      'server/src/services',
+      'server/src/models',
+      'server/src/routes',
+      'server/src/middlewares',
+      'server/src/validators',
+      'server/src/constants',
+      'server/src/utils',
+      'server/src/config',
+      'server/uploads',
+      'database/migrations',
+      'database/seeders',
+      'tests/unit',
+      'tests/integration',
+      'tests/e2e',
+      'tests/fixtures',
+      'scripts'
+    ].forEach(folder => zip.folder(folder));
 
     const blob = await zip.generateAsync({ type: 'blob' });
     saveAs(blob, `${docs.meta.slug}-project-kit.zip`);
@@ -821,5 +927,5 @@ export function renderDocGenerator() {
   });
 
   update();
-  showStep(0);
+  showStep(0, false);
 }
