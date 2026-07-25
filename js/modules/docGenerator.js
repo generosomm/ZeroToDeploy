@@ -525,6 +525,18 @@ function fieldHtml(field, state) {
   return `<div class="${className}"><label for="${fieldId}">${field.label}</label>${control}</div>`;
 }
 
+const TOOL_OPTIONS = [
+  { name: 'Codex', mark: 'Cx', desc: 'Builds and edits a real repository' },
+  { name: 'Cursor', mark: 'C', desc: 'AI-first code editor' },
+  { name: 'GitHub Copilot', mark: 'GH', desc: 'AI pair programmer' },
+  { name: 'Claude Code', mark: 'Cl', desc: 'Terminal coding agent' },
+  { name: 'Bolt.new', mark: 'B', desc: 'Browser-based app builder' },
+  { name: 'Replit Agent', mark: 'R', desc: 'Hosted development agent' },
+  { name: 'v0 by Vercel', mark: 'v0', desc: 'UI and app generator' },
+  { name: 'Gemini', mark: 'G', desc: 'Google AI coding assistant' },
+  { name: 'Any AI coding assistant', mark: 'AI', desc: 'Portable prompt format' }
+];
+
 export function renderDocGenerator() {
   const container = document.getElementById('doc-generator-container');
   if (!container) return;
@@ -537,62 +549,147 @@ export function renderDocGenerator() {
   }
 
   let active = 'master';
+  let currentStep = 0;
   let docs = generate(state);
+  const allFields = Object.fromEntries(GROUPS.flatMap(group => group.fields).map(field => [field.key, field]));
+  const renderFields = keys => keys.map(key => fieldHtml(allFields[key], state)).join('');
 
   container.innerHTML = `
-    <div class="planner-shell">
-      <aside class="planner-aside">
-        <div class="planner-aside-kicker">Your project brief</div>
-        <h3>Plan once.<br>Build in small, safe sessions.</h3>
-        <p>Complete what you know. Missing decisions are marked instead of being silently invented by AI.</p>
-        <div class="planner-score" aria-live="polite">
-          <div class="planner-score-ring" id="planner-score-ring"><span id="planner-score-value">0%</span></div>
-          <div><strong>Brief readiness</strong><span id="planner-score-copy">Add your project details</span></div>
+    <div class="guided-builder">
+      <div class="guided-builder-head">
+        <div>
+          <span class="builder-badge">Beginner-friendly prompt builder</span>
+          <h3>Answer simple questions. We structure the technical prompt.</h3>
+          <p>No coding terms required. Examples are included, and you can leave anything uncertain blank.</p>
         </div>
-        <div class="planner-route-list">
-          <span><b>01</b> Product truth</span><span><b>02</b> Architecture</span>
-          <span><b>03</b> Data & permissions</span><span><b>04</b> Design rules</span>
-          <span><b>05</b> AI working rules</span>
+        <div class="guided-readiness" aria-live="polite">
+          <strong id="planner-score-value">0%</strong>
+          <span id="planner-score-copy">Brief readiness</span>
         </div>
-        <div class="planner-privacy">Private by default - your answers stay in this browser.</div>
-      </aside>
+      </div>
 
-      <div class="planner-main">
-        <div class="planner-form">
-          ${GROUPS.map(group => `
-            <section class="planner-step" aria-labelledby="planner-step-${group.number}">
-              <div class="planner-step-head">
-                <span>${group.number}</span>
-                <div><h4 id="planner-step-${group.number}">${group.title}</h4><p>${group.hint}</p></div>
+      <div class="guided-progress" aria-label="Builder progress">
+        <div class="guided-progress-line"><span id="guided-progress-fill"></span></div>
+        ${['AI tool', 'Your idea', 'Users & scope', 'Workflow & data', 'Build choices', 'Your prompt'].map((label, index) => `
+          <button class="guided-progress-step ${index === 0 ? 'active' : ''}" data-jump-step="${index}">
+            <b>${index + 1}</b><span>${label}</span>
+          </button>
+        `).join('')}
+      </div>
+
+      <div class="guided-content">
+        <section class="guided-panel active" data-guide-panel="0">
+          <div class="guided-panel-heading">
+            <span>Step 1 of 6</span>
+            <h4>Which AI coding tool will you use?</h4>
+            <p>Choose one if you know it. The generated project kit still works if you change tools later.</p>
+          </div>
+          <div class="tool-choice-grid">
+            ${TOOL_OPTIONS.map(tool => `
+              <button class="tool-choice ${state.aiTool === tool.name ? 'selected' : ''}" data-tool-name="${escapeHTML(tool.name)}">
+                <span class="tool-mark">${tool.mark}</span>
+                <span><strong>${tool.name}</strong><small>${tool.desc}</small></span>
+                <i aria-hidden="true">✓</i>
+              </button>
+            `).join('')}
+          </div>
+          <div class="guided-tip"><b>Not sure?</b> Choose “Any AI coding assistant.” You will receive a portable prompt with no tool-specific commands.</div>
+        </section>
+
+        <section class="guided-panel" data-guide-panel="1">
+          <div class="guided-panel-heading">
+            <span>Step 2 of 6</span>
+            <h4>Describe the idea in everyday language</h4>
+            <p>Explain the outcome for the client. Do not worry about databases, APIs, or frameworks yet.</p>
+          </div>
+          <div class="planner-fields">${renderFields(['appName', 'projectType', 'summary', 'problem'])}</div>
+          <div class="guided-example">
+            <b>Example answer</b>
+            <p>“A clinic portal where patients request appointments and staff confirm schedules without using phone calls and spreadsheets.”</p>
+          </div>
+        </section>
+
+        <section class="guided-panel" data-guide-panel="2">
+          <div class="guided-panel-heading">
+            <span>Step 3 of 6</span>
+            <h4>Decide who uses it and what launches first</h4>
+            <p>List only the features needed for the first useful version. Extra ideas can wait.</p>
+          </div>
+          <div class="planner-fields">${renderFields(['roles', 'features', 'nonGoals', 'successMetrics'])}</div>
+          <div class="guided-example">
+            <b>Good feature format</b>
+            <p>“Patient can request an appointment” is clearer than “appointment system” because it names the user and behavior.</p>
+          </div>
+        </section>
+
+        <section class="guided-panel" data-guide-panel="3">
+          <div class="guided-panel-heading">
+            <span>Step 4 of 6</span>
+            <h4>Explain what happens and what information is stored</h4>
+            <p>Describe the journey like a story. This prevents the AI from inventing business rules.</p>
+          </div>
+          <div class="planner-fields">${renderFields(['workflows', 'entities', 'sensitivity', 'auth'])}</div>
+          <div class="guided-example">
+            <b>Workflow example</b>
+            <p>“Patient sends request → receptionist checks schedule → doctor confirms → patient receives the final time.”</p>
+          </div>
+        </section>
+
+        <section class="guided-panel" data-guide-panel="4">
+          <div class="guided-panel-heading">
+            <span>Step 5 of 6</span>
+            <h4>Choose practical build preferences</h4>
+            <p>The defaults are safe for beginners. Only change an option when the client or hosting provider requires it.</p>
+          </div>
+          <div class="planner-fields">
+            ${renderFields(['stack', 'deployment', 'constraints', 'platforms', 'designDirection', 'skillLevel', 'operatingSystem', 'approvalRule'])}
+          </div>
+          <div class="guided-tip"><b>Beginner recommendation:</b> Let the AI recommend one maintainable stack after it reads your requirements. Ask it to explain the choice before writing code.</div>
+        </section>
+
+        <section class="guided-panel" data-guide-panel="5">
+          <div class="guided-panel-heading guided-panel-heading--result">
+            <span>Step 6 of 6</span>
+            <h4>Your project prompt is ready</h4>
+            <p>Start with the Master prompt. The other tabs become useful after the plan is approved.</p>
+          </div>
+          <div class="prompt-use-strip">
+            <div><b>1</b><span><strong>Copy</strong><small>Copy the Master prompt</small></span></div>
+            <div><b>2</b><span><strong>Open your AI</strong><small>Open the project folder first</small></span></div>
+            <div><b>3</b><span><strong>Paste and plan</strong><small>Approve the plan before code</small></span></div>
+            <div><b>4</b><span><strong>Build in pieces</strong><small>One feature per session</small></span></div>
+          </div>
+
+          <div class="planner-output">
+            <div class="planner-output-top">
+              <div>
+                <span class="builder-badge">Generated project kit</span>
+                <h3>Your AI-ready build package</h3>
+                <p>Use the master prompt once, then the smaller session prompts for day-to-day work.</p>
               </div>
-              <div class="planner-fields">${group.fields.map(field => fieldHtml(field, state)).join('')}</div>
-            </section>
-          `).join('')}
-        </div>
+              <div class="planner-actions">
+                <button class="btn-secondary" id="reset-planner-btn">Start over</button>
+                <button class="btn-sm-primary" id="download-project-kit-btn">Download full project kit</button>
+              </div>
+            </div>
+            <div class="planner-output-tabs" role="tablist">
+              ${Object.entries(docs).filter(([key]) => key !== 'meta').map(([key, doc]) =>
+                `<button class="planner-output-tab ${key === active ? 'active' : ''}" data-output-key="${key}" role="tab">${doc.label}</button>`
+              ).join('')}
+            </div>
+            <div class="planner-preview-head">
+              <span id="planner-active-file">${docs[active].filename}</span>
+              <button class="btn-secondary" id="copy-planner-output-btn">${icons.copy} Copy this file</button>
+            </div>
+            <pre class="planner-code" id="planner-code-preview"><code>${escapeHTML(docs[active].content)}</code></pre>
+          </div>
+        </section>
+      </div>
 
-        <div class="planner-output">
-          <div class="planner-output-top">
-            <div>
-              <span class="builder-badge">Generated project kit</span>
-              <h3>Your AI-ready build package</h3>
-              <p>Use the master prompt once, then use smaller session prompts for day-to-day work.</p>
-            </div>
-            <div class="planner-actions">
-              <button class="btn-secondary" id="reset-planner-btn">Reset</button>
-              <button class="btn-sm-primary" id="download-project-kit-btn">Download project kit</button>
-            </div>
-          </div>
-          <div class="planner-output-tabs" role="tablist">
-            ${Object.entries(docs).filter(([key]) => key !== 'meta').map(([key, doc]) =>
-              `<button class="planner-output-tab ${key === active ? 'active' : ''}" data-output-key="${key}" role="tab">${doc.label}</button>`
-            ).join('')}
-          </div>
-          <div class="planner-preview-head">
-            <span id="planner-active-file">${docs[active].filename}</span>
-            <button class="btn-secondary" id="copy-planner-output-btn">${icons.copy} Copy</button>
-          </div>
-          <pre class="planner-code" id="planner-code-preview"><code>${escapeHTML(docs[active].content)}</code></pre>
-        </div>
+      <div class="guided-footer">
+        <button class="btn-secondary" id="guided-prev-btn">← Previous</button>
+        <span><b id="guided-step-count">1</b> of 6 · Saved automatically in this browser</span>
+        <button class="btn-sm-primary" id="guided-next-btn">Next: describe the idea →</button>
       </div>
     </div>
   `;
@@ -601,18 +698,39 @@ export function renderDocGenerator() {
   const filename = document.getElementById('planner-active-file');
   const scoreValue = document.getElementById('planner-score-value');
   const scoreCopy = document.getElementById('planner-score-copy');
-  const scoreRing = document.getElementById('planner-score-ring');
+  const progressFill = document.getElementById('guided-progress-fill');
+  const previousButton = document.getElementById('guided-prev-btn');
+  const nextButton = document.getElementById('guided-next-btn');
+  const stepCount = document.getElementById('guided-step-count');
   const important = ['appName', 'summary', 'problem', 'roles', 'features', 'workflows', 'entities', 'successMetrics', 'constraints', 'designDirection'];
+  const nextLabels = ['Next: describe the idea →', 'Next: users and features →', 'Next: workflow and data →', 'Next: build choices →', 'Generate my prompt →'];
+
+  const showStep = target => {
+    currentStep = Math.max(0, Math.min(5, target));
+    container.querySelectorAll('.guided-panel').forEach((panel, index) => panel.classList.toggle('active', index === currentStep));
+    container.querySelectorAll('.guided-progress-step').forEach((step, index) => {
+      step.classList.toggle('active', index === currentStep);
+      step.classList.toggle('complete', index < currentStep);
+    });
+    progressFill.style.width = `${(currentStep / 5) * 100}%`;
+    stepCount.textContent = String(currentStep + 1);
+    previousButton.disabled = currentStep === 0;
+    nextButton.hidden = currentStep === 5;
+    if (currentStep < 5) nextButton.textContent = nextLabels[currentStep];
+    if (currentStep === 5) update();
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const update = () => {
     docs = generate(state);
-    preview.innerHTML = `<code>${escapeHTML(docs[active].content)}</code>`;
-    filename.textContent = docs[active].filename;
+    if (preview && filename) {
+      preview.innerHTML = `<code>${escapeHTML(docs[active].content)}</code>`;
+      filename.textContent = docs[active].filename;
+    }
     const complete = important.filter(key => String(state[key] || '').trim().length >= 8).length;
     const score = Math.round((complete / important.length) * 100);
     scoreValue.textContent = `${score}%`;
-    scoreRing.style.setProperty('--score', `${score * 3.6}deg`);
-    scoreCopy.textContent = score < 50 ? 'Add the core client facts' : score < 80 ? 'Good start - resolve the gaps' : 'Ready for client review';
+    scoreCopy.textContent = score < 50 ? 'Keep adding the basics' : score < 80 ? 'Good start - a few gaps remain' : 'Ready for client review';
   };
 
   container.querySelectorAll('[data-planner-key]').forEach(input => {
@@ -629,6 +747,21 @@ export function renderDocGenerator() {
       }
       update();
     });
+  });
+
+  container.querySelectorAll('.tool-choice').forEach(button => {
+    button.addEventListener('click', () => {
+      state.aiTool = button.dataset.toolName;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      container.querySelectorAll('.tool-choice').forEach(item => item.classList.toggle('selected', item === button));
+      update();
+    });
+  });
+
+  previousButton.addEventListener('click', () => showStep(currentStep - 1));
+  nextButton.addEventListener('click', () => showStep(currentStep + 1));
+  container.querySelectorAll('[data-jump-step]').forEach(button => {
+    button.addEventListener('click', () => showStep(Number(button.dataset.jumpStep)));
   });
 
   container.querySelectorAll('.planner-output-tab').forEach(tab => {
@@ -688,4 +821,5 @@ export function renderDocGenerator() {
   });
 
   update();
+  showStep(0);
 }

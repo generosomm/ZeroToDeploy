@@ -110,6 +110,113 @@
       </div>
     </section>
 
+    <section class="section scrollspy-section" id="prompt-school" data-nav="Learn">
+      <div class="section-header teaching-header">
+        <div>
+          <div class="section-tag">Learn Before You Prompt</div>
+          <h2 class="section-title">How to Talk to AI Like a Clear Project Manager</h2>
+          <p class="section-subtitle">You do not need programming vocabulary. You need to explain the situation, desired behavior, limits, and what a successful result looks like.</p>
+        </div>
+        <div class="teaching-time">10-minute beginner lesson</div>
+      </div>
+
+      <div class="prompt-formula">
+        <div class="prompt-formula-intro">
+          <span>The reliable prompt formula</span>
+          <h3>Context + Goal + Behavior + Limits + Done</h3>
+          <p>The builder above collects these ingredients and turns them into instructions an AI coding assistant can follow.</p>
+        </div>
+        <div class="prompt-formula-parts">
+          <div><b>01</b><strong>Context</strong><span>What exists and which files matter?</span></div>
+          <div><b>02</b><strong>Goal</strong><span>Why does the user need this?</span></div>
+          <div><b>03</b><strong>Behavior</strong><span>What should happen step by step?</span></div>
+          <div><b>04</b><strong>Limits</strong><span>What must it avoid or preserve?</span></div>
+          <div><b>05</b><strong>Done</strong><span>How will you verify it works?</span></div>
+        </div>
+      </div>
+
+      <div class="teaching-grid">
+        <article class="teaching-card">
+          <span class="teaching-card-num">01</span>
+          <h3>Point to relevant context</h3>
+          <p>Name the requirement document and code paths related to the task. Do not attach the entire project every time.</p>
+          <code>Read context/RULES.md and the login files.</code>
+        </article>
+        <article class="teaching-card">
+          <span class="teaching-card-num">02</span>
+          <h3>Describe the user behavior</h3>
+          <p>Tell the AI who acts, what they do, and what should happen next. Behavior is clearer than vague implementation words.</p>
+          <code>Staff approves a request; the client sees Approved.</code>
+        </article>
+        <article class="teaching-card">
+          <span class="teaching-card-num">03</span>
+          <h3>Ask for a plan first</h3>
+          <p>For a complex feature, let the AI inspect dependencies and propose small steps before it changes files.</p>
+          <code>Analyze first. Propose a plan. Implement step one only.</code>
+        </article>
+        <article class="teaching-card">
+          <span class="teaching-card-num">04</span>
+          <h3>Give the AI a useful role</h3>
+          <p>A role sets priorities. Choose the expertise the task needs, such as accessibility, security, database design, or performance.</p>
+          <code>Act as a security-conscious senior web engineer.</code>
+        </article>
+        <article class="teaching-card">
+          <span class="teaching-card-num">05</span>
+          <h3>Build through small prompts</h3>
+          <p>Finish and test one vertical slice before adding the next. Small sessions cost fewer tokens and are easier to undo.</p>
+          <code>Form → validation → save → test. Then stop.</code>
+        </article>
+      </div>
+
+      <div class="prompt-comparison">
+        <div class="prompt-comparison-head">
+          <div>
+            <span class="section-tag">Good vs. vague</span>
+            <h3>Specific prompts give the AI fewer reasons to guess</h3>
+          </div>
+          <p>Task: add a request search experience to a staff dashboard.</p>
+        </div>
+        <div class="prompt-comparison-grid">
+          <article class="prompt-example prompt-example--bad">
+            <span>Vague prompt</span>
+            <blockquote>“Add search to the dashboard and make it look good.”</blockquote>
+            <ul>
+              <li>No user or reason</li>
+              <li>No files or existing behavior</li>
+              <li>No loading, empty, or error states</li>
+              <li>No way to decide whether it is finished</li>
+            </ul>
+          </article>
+          <article class="prompt-example prompt-example--good">
+            <span>Clear prompt</span>
+            <blockquote>“Act as a senior frontend engineer. Read the dashboard page, request service, and DESIGN.md. Let staff search requests by reference number or client name. Results should update after a short pause, preserve the existing filters, work by keyboard, and show clear empty and error states. Add tests for matching and no-result cases. Plan first, then change only the relevant files.”</blockquote>
+            <ul>
+              <li>Names the role and relevant context</li>
+              <li>Explains user behavior and constraints</li>
+              <li>Defines important interface states</li>
+              <li>Includes verification and scope control</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="first-project-guide">
+        <div class="first-project-title">
+          <span>First project?</span>
+          <h3>Use this website in this order</h3>
+          <p>You can return to these six steps for every future client system.</p>
+        </div>
+        <ol class="first-project-steps">
+          <li><b>1</b><div><strong>Interview the client</strong><span>Write facts in the planner, not assumptions.</span></div></li>
+          <li><b>2</b><div><strong>Generate the project kit</strong><span>Review every “to be confirmed” item.</span></div></li>
+          <li><b>3</b><div><strong>Approve the AI plan</strong><span>Do not let it code until the milestones make sense.</span></div></li>
+          <li><b>4</b><div><strong>Build one feature</strong><span>Use one focused session and relevant files.</span></div></li>
+          <li><b>5</b><div><strong>Run and test it</strong><span>Paste exact errors, expected behavior, and reproduction steps.</span></div></li>
+          <li><b>6</b><div><strong>Harden and deploy</strong><span>Complete the launch checklist and client handover.</span></div></li>
+        </ol>
+      </div>
+    </section>
+
     <!-- Section 5: Phase 0 Checklist -->
     <section class="section scrollspy-section" id="phase0" data-nav="Checklist">
       <div class="section-header">
